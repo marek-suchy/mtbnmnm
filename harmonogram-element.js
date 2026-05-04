@@ -44,10 +44,8 @@
   //   - days = pole dnů (id z DAYS), kdy bude host přítomen
   //   - host se zobrazí v každém dni, kde je v jeho days
   const HOSTS = [
-    // { name: "Zdeněk Štybar", role: "Ambasador Czech Cycling Academy",
-    //   days: ["sat", "sun"] },
-    // { name: "Tereza Huříková", role: "Profesionální cyklistka",
-    //   days: ["fri"] },
+    { name: "Zdeněk Štybar", role: "Ambasador Czech Cycling Academy", days: ["sat", "sun"] },
+    { name: "Tereza Huříková", role: "Profesionální cyklistka", days: ["fri"] },
   ];
 
   const EVENTS = [
