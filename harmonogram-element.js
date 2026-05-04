@@ -44,14 +44,16 @@
   //   - days = pole dnů (id z DAYS), kdy bude host přítomen
   //   - host se zobrazí v každém dni, kde je v jeho days
   const HOSTS = [
-{ name: "Zdeněk Štybar", role: "Ambasador Czech Cycling Academy", days: ["sat", "sun"] },
-{ name: "Tereza Huříková", role: "Profesionální cyklistka", days: ["fri"] },
+    // { name: "Zdeněk Štybar", role: "Ambasador Czech Cycling Academy",
+    //   days: ["sat", "sun"] },
+    // { name: "Tereza Huříková", role: "Profesionální cyklistka",
+    //   days: ["fri"] },
   ];
 
   const EVENTS = [
 
     // ─── ČTVRTEK 21. 5. ───
-    { day: "thu", allDay: false, time: "09:00", duration: 360, type: "deti",
+    { day: "thu", allDay: true, time: null, duration: null, type: "deti",
       title: "Festival cyklistiky pro školy",
       desc: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí." },
     { day: "thu", allDay: false, time: "13:00", duration: 30, type: "deti",
@@ -81,10 +83,10 @@
     { day: "fri", allDay: false, time: "08:00", duration: 540, type: "zavod",
       title: "XCO + XCC - Oficiální tréninky",
       desc: "Oficiální trénink všech kategorií na XCO i XCC trati." },
-    { day: "fri", allDay: false, time: "09:00", duration: 360, type: "deti",
+    { day: "fri", allDay: true, time: null, duration: null, type: "deti",
       title: "Festival cyklistiky pro školy",
       desc: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí." },
-    { day: "fri", allDay: true, time: null, duration: null, type: "vyjizd",
+    { day: "fri", allDay: false, time: "12:00", duration: 120, type: "vyjizd",
       title: "Edukativní e-MTB vyjížďka: Gaspi",
       desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
     { day: "fri", allDay: false, time: "13:00", duration: 240, type: "exhibice",
@@ -412,22 +414,41 @@
       color: var(--text-muted); padding: 10px 0;
     }
 
-    /* Sekce Oficiální hosté */
-    .hosts-section { margin-top: 28px; }
+    /* Sekce Oficiální hosté — celá šířka nad sloupci */
+    .hosts-section { margin-bottom: 28px; }
+    .hosts-header {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13px; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--accent);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+    .hosts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
     .host-card {
       display: flex; align-items: flex-start; gap: 11px;
-      padding: 11px 13px; background: var(--bg-card);
+      padding: 13px 15px;
+      background: linear-gradient(135deg, var(--bg-card) 0%, #232323 100%);
       border-radius: var(--r-card);
       border-left: 3px solid var(--accent);
+      transition: transform .18s, border-left-color .18s;
+    }
+    .host-card:hover {
+      transform: translateY(-2px);
+      border-left-color: #fff;
     }
     .host-name {
       font-family: var(--font-display); font-weight: 700;
-      font-size: 14px; line-height: 1.3;
+      font-size: 15px; line-height: 1.25;
     }
     .host-role {
       font-family: var(--font-body); font-weight: 300;
       font-size: 12px; color: var(--text-muted);
-      margin-top: 3px; line-height: 1.4;
+      margin-top: 4px; line-height: 1.4;
     }
   `;
 
@@ -538,15 +559,15 @@
 
       const cards = list.map(h => `
         <div class="host-card">
-          <div class="event-body">
+          <div>
             <div class="host-name">${h.name}</div>
             ${h.role ? `<div class="host-role">${h.role}</div>` : ''}
           </div>
         </div>`).join('');
 
       return `<div class="hosts-section">
-        <div class="col-header">Oficiální hosté</div>
-        <div class="event-list">${cards}</div>
+        <div class="hosts-header">Koho můžete potkat</div>
+        <div class="hosts-grid">${cards}</div>
       </div>`;
     }
 
@@ -555,7 +576,7 @@
       const timed  = day.filter(e => !e.allDay).sort((a, b) => a.time.localeCompare(b.time));
       const allDay = day.filter(e => e.allDay);
 
-      return `<div class="columns">
+      return this._renderHosts() + `<div class="columns">
         <div>
           <div class="col-header">Časový program</div>
           <div class="event-list">
@@ -571,7 +592,6 @@
             ${allDay.filter(e => this._isVisible(e)).length === 0
               ? `<p class="empty-msg">Žádné aktivity pro tento filtr.</p>` : ''}
           </div>
-          ${this._renderHosts()}
         </div>
       </div>`;
     }
