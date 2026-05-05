@@ -491,7 +491,7 @@
 
     .schedule-heading {
       font-family: var(--font-display);
-      font-weight: 700;
+      font-weight: 900;
       font-size: clamp(2.4rem, 6vw, 4rem);
       text-transform: uppercase;
       letter-spacing: .04em;
