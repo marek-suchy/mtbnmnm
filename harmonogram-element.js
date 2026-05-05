@@ -1,5 +1,5 @@
 // ============================================================
-// HARMONOGRAM MTB NMNM 2026 — Wix Custom Element
+// HARMONOGRAM MTB NMNM 2026 — Wix Custom Element (CS + EN)
 // ============================================================
 //
 // Použití ve Wixu:
@@ -7,10 +7,16 @@
 //   2. Wix Studio → Add → Embed Code → Custom Element
 //      Server URL: https://USERNAME.github.io/REPO/harmonogram-element.js
 //      Tag name:   harmonogram-widget
-//   3. Drop element na stránku — automaticky se přizpůsobí výšce obsahu
+//   3. Drop element na obě stránky (CS + EN) — stejný element, stejný soubor
 //
-// Editace dat: uprav pole DAYS / TYPES / EVENTS níže
-// a nahraj soubor znovu na GitHub.
+// Detekce jazyka:
+//   - automaticky podle URL (cesta /cs/... → CS, jinak EN)
+//   - manuální override: <harmonogram-widget lang="en"></harmonogram-widget>
+//
+// Editace dat:
+//   - tituly, popisky a role hostů jsou objekty { cs: "...", en: "..." }
+//   - link může být string (sdílený) nebo objekt { cs, en } (různé URL)
+//   - když přidáváš nový event, vyplň OBA jazyky
 //
 // ============================================================
 
@@ -21,257 +27,433 @@
   // ║  ✏️  EDITOVATELNÁ DATA                                    ║
   // ╚══════════════════════════════════════════════════════════╝
 
+  // UI texty (záhlaví, filtry, sloupce, prázdné stavy)
+  const STRINGS = {
+    cs: {
+      heading:        "Harmonogram",
+      filter_label:   "Filtr:",
+      all:            "Vše",
+      timed_header:   "Časový program",
+      allday_header:  "Celodenní aktivity",
+      hosts_header:   "Oficiální hosté",
+      empty_events:   "Žádné události pro tento filtr.",
+      empty_allday:   "Žádné aktivity pro tento filtr.",
+      duration_min:   "min",
+      duration_h:     "hod",
+    },
+    en: {
+      heading:        "Schedule",
+      filter_label:   "Filter:",
+      all:            "All",
+      timed_header:   "Time Schedule",
+      allday_header:  "All-Day Activities",
+      hosts_header:   "Official Guests",
+      empty_events:   "No events match this filter.",
+      empty_allday:   "No activities match this filter.",
+      duration_min:   "min",
+      duration_h:     "h",
+    },
+  };
+
   const DAYS = [
-    { id: "thu", label: "Čt 21. 5.", date: "2026-05-21" },
-    { id: "fri", label: "Pá 22. 5.", date: "2026-05-22" },
-    { id: "sat", label: "So 23. 5.", date: "2026-05-23" },
-    { id: "sun", label: "Ne 24. 5.", date: "2026-05-24" },
+    { id: "thu", date: "2026-05-21", label: { cs: "Čt 21. 5.", en: "Thu May 21" } },
+    { id: "fri", date: "2026-05-22", label: { cs: "Pá 22. 5.", en: "Fri May 22" } },
+    { id: "sat", date: "2026-05-23", label: { cs: "So 23. 5.", en: "Sat May 23" } },
+    { id: "sun", date: "2026-05-24", label: { cs: "Ne 24. 5.", en: "Sun May 24" } },
   ];
 
   const TYPES = {
-    zavod:    { label: "Závod / Trénink",         dot: "#ee1d4b" },
-    exhibice: { label: "Exhibice",                dot: "#e84c1d" },
-    deti:     { label: "Pro děti",                dot: "#e8d21d" },
-    vyjizd:   { label: "Vyjížďka / Workshop",     dot: "#b7d433" },
-    expo:     { label: "Expo Zone",               dot: "#6ed41d" },
-    testfest: { label: "Test Fest",               dot: "#1db8d4" },
-    talkshow: { label: "Talkshow / Autogramiáda", dot: "#1d4bee" },
+    zavod:    { dot: "#ee1d4b", label: { cs: "Závod / Trénink",         en: "Race / Training" } },
+    exhibice: { dot: "#e84c1d", label: { cs: "Exhibice",                en: "Exhibition" } },
+    deti:     { dot: "#e8d21d", label: { cs: "Pro děti",                en: "For Children" } },
+    vyjizd:   { dot: "#b7d433", label: { cs: "Vyjížďka / Workshop",     en: "Ride / Workshop" } },
+    expo:     { dot: "#6ed41d", label: { cs: "Expo Zone",               en: "Expo Zone" } },
+    testfest: { dot: "#1db8d4", label: { cs: "Test Fest",               en: "Test Fest" } },
+    talkshow: { dot: "#1d4bee", label: { cs: "Talkshow / Autogramiáda", en: "Talkshow / Autograph" } },
   };
 
-  // Oficiální hosté — koho na akci potkáš
-  // Formát: { name: "Jméno", role: "Funkce/Popis", days: ["thu","fri","sat","sun"] }
-  //   - role je volitelná (může být prázdný string)
-  //   - days = pole dnů (id z DAYS), kdy bude host přítomen
-  //   - host se zobrazí v každém dni, kde je v jeho days
+  // Oficiální hosté
+  // Formát: { name: "Jméno", role: { cs: "...", en: "..." }, days: [...] }
+  //   - jméno je sdílené (jazykově neutrální)
+  //   - role volitelná, prázdný string se nezobrazí
   const HOSTS = [
-    { name: "Richard „Gaspi“ Gasperotti", role: "",
-      days: ["fri"] },
-    { name: "Tereza Huříková", role: "",
-      days: ["fri"] },
-    { name: "Daniel Stach", role: "",
-      days: ["fri", "sat", "sun"] },
-    { name: "Kateřina Neumannová", role: "",
-      days: ["fri", "sat"] },
-    { name: "Zdeněk Štybar", role: "",
-      days: ["sat", "sun"] },
-    { name: "Jakub Vencl", role: "",
-      days: ["sat", "sun"] },
-    { name: "DJ Lucky Boy", role: "",
-      days: ["sat"] },
-    { name: "Eva Adamczyková", role: "",
-      days: ["sat"] },
-    { name: "Vavřinec Hradílek", role: "",
-      days: ["sat"] },
-    { name: "Michal Prokop", role: "",
-      days: ["sun"] },
-    { name: "Filip Mareš", role: "",
-      days: ["sun"] },
-    { name: "Petr Vabroušek", role: "",
-      days: ["sun"] },
-    { name: "Jaroslav Kulhavý", role: "",
-      days: ["sun"] },
-    { name: "Gabriela Soukalová", role: "",
-      days: ["sun"] },
+    { name: "Richard „Gaspi“ Gasperotti", role: { cs: "", en: "" }, days: ["fri"] },
+    { name: "Tereza Huříková",            role: { cs: "", en: "" }, days: ["fri"] },
+    { name: "Daniel Stach",               role: { cs: "", en: "" }, days: ["fri", "sat", "sun"] },
+    { name: "Kateřina Neumannová",        role: { cs: "", en: "" }, days: ["fri", "sat"] },
+    { name: "Zdeněk Štybar",              role: { cs: "", en: "" }, days: ["sat", "sun"] },
+    { name: "Jakub Vencl",                role: { cs: "", en: "" }, days: ["sat", "sun"] },
+    { name: "DJ Lucky Boy",               role: { cs: "", en: "" }, days: ["sat"] },
+    { name: "Eva Adamczyková",            role: { cs: "", en: "" }, days: ["sat"] },
+    { name: "Vavřinec Hradílek",          role: { cs: "", en: "" }, days: ["sat"] },
+    { name: "Michal Prokop",              role: { cs: "", en: "" }, days: ["sun"] },
+    { name: "Filip Mareš",                role: { cs: "", en: "" }, days: ["sun"] },
+    { name: "Petr Vabroušek",             role: { cs: "", en: "" }, days: ["sun"] },
+    { name: "Jaroslav Kulhavý",           role: { cs: "", en: "" }, days: ["sun"] },
+    { name: "Gabriela Soukalová",         role: { cs: "", en: "" }, days: ["sun"] },
   ];
+
+  // URL pro race-program / side-events
+  // CS = /cs/..., EN = /...   (jen /cs/ se mění na /)
+  const URL_XCO          = { cs: "https://www.mtbnmnm.com/cs/race-program/xco",          en: "https://www.mtbnmnm.com/race-program/xco" };
+  const URL_XCC          = { cs: "https://www.mtbnmnm.com/cs/race-program/xcc",          en: "https://www.mtbnmnm.com/race-program/xcc" };
+  const URL_JUNIORSERIES = { cs: "https://www.mtbnmnm.com/cs/race-program/junior-series", en: "https://www.mtbnmnm.com/race-program/junior-series" };
+  const URL_NIGHTRACE    = { cs: "https://www.mtbnmnm.com/cs/side-events/night-race",     en: "https://www.mtbnmnm.com/side-events/night-race" };
 
   const EVENTS = [
 
-    // ─── ČTVRTEK 21. 5. ───
+    // ─── ČTVRTEK 21. 5. / THURSDAY MAY 21 ───
     { day: "thu", allDay: false, time: "09:00", duration: 360, type: "deti",
-      title: "Festival cyklistiky pro školy",
-      desc: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí." },
+      title: { cs: "Festival cyklistiky pro školy",
+               en: "Cycling Festival for Schools" },
+      desc:  { cs: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí.",
+               en: "Skill competitions on and off the bike plus knowledge games about sports, health and the environment." } },
+
     { day: "thu", allDay: false, time: "13:00", duration: 30, type: "deti",
-      title: "Dětská tisková konference",
-      desc: "Hvězdy MTB scény odpovídají dětem na dotazy v unikátním formátu." },
+      title: { cs: "Dětská tisková konference",
+               en: "Children's Press Conference" },
+      desc:  { cs: "Hvězdy MTB scény odpovídají dětem na dotazy v unikátním formátu.",
+               en: "MTB stars answer kids' questions in a unique format." } },
+
     { day: "thu", allDay: false, time: "14:00", duration: 180, type: "zavod",
-      title: "XCO - Oficiální trénink",
-      desc: "Oficiální trénink všech kategorií na olympijské cross-country trati.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xco" },
+      title: { cs: "XCO - Oficiální trénink",
+               en: "XCO - Official Training" },
+      desc:  { cs: "Oficiální trénink všech kategorií na olympijské cross-country trati.",
+               en: "Official training for all categories on the Olympic cross-country track." },
+      link: URL_XCO },
+
     { day: "thu", allDay: false, time: "17:00", duration: null, type: "zavod",
-      title: "XCC - Women Junior a Men Junior: Kvalifikace",
-      desc: "Jedno kolo XCC tratě, kde se rozhoduje o postupu do finálových jízd.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
+      title: { cs: "XCC - Women Junior a Men Junior: Kvalifikace",
+               en: "XCC - Women Junior + Men Junior: Qualification" },
+      desc:  { cs: "Jedno kolo XCC tratě, kde se rozhoduje o postupu do finálových jízd.",
+               en: "One lap of the XCC track that decides who advances to the finals." },
+      link: URL_XCC },
+
     { day: "thu", allDay: false, time: "18:00", duration: null, type: "zavod",
-      title: "XCC - Women Junior: Finále",
-      desc: "40 nejrychlejších juniorek se popere o vítězství na XCC okruhu.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
+      title: { cs: "XCC - Women Junior: Finále",
+               en: "XCC - Women Junior: Final" },
+      desc:  { cs: "40 nejrychlejších juniorek se popere o vítězství na XCC okruhu.",
+               en: "The 40 fastest junior women fight for victory on the XCC circuit." },
+      link: URL_XCC },
+
     { day: "thu", allDay: false, time: "18:25", duration: null, type: "zavod",
-      title: "XCC - Men Junior: Finále",
-      desc: "40 nejrychlejších juniorů se popere o vítězství na XCC okruhu.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
+      title: { cs: "XCC - Men Junior: Finále",
+               en: "XCC - Men Junior: Final" },
+      desc:  { cs: "40 nejrychlejších juniorů se popere o vítězství na XCC okruhu.",
+               en: "The 40 fastest junior men fight for victory on the XCC circuit." },
+      link: URL_XCC },
+
     { day: "thu", allDay: true, time: null, duration: null, type: "testfest",
-      title: "Test Fest [15-19h]",
-      desc: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny." },
+      title: { cs: "Test Fest [15-19h]",
+               en: "Test Fest [3-7 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
 
-    // ─── PÁTEK 22. 5. ───
+
+    // ─── PÁTEK 22. 5. / FRIDAY MAY 22 ───
     { day: "fri", allDay: false, time: "08:00", duration: 540, type: "zavod",
-      title: "XCO + XCC - Oficiální tréninky",
-      desc: "Oficiální trénink všech kategorií na XCO i XCC trati." },
+      title: { cs: "XCO + XCC - Oficiální tréninky",
+               en: "XCO + XCC - Official Trainings" },
+      desc:  { cs: "Oficiální trénink všech kategorií na XCO i XCC trati.",
+               en: "Official training for all categories on the XCO and XCC tracks." } },
+
     { day: "fri", allDay: false, time: "09:00", duration: 360, type: "deti",
-      title: "Festival cyklistiky pro školy",
-      desc: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí." },
+      title: { cs: "Festival cyklistiky pro školy",
+               en: "Cycling Festival for Schools" },
+      desc:  { cs: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí.",
+               en: "Skill competitions on and off the bike plus knowledge games about sports, health and the environment." } },
+
     { day: "fri", allDay: true, time: null, duration: null, type: "vyjizd",
-      title: "Edukativní e-MTB vyjížďka: Gaspi",
-      desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+
     { day: "fri", allDay: false, time: "13:00", duration: 240, type: "exhibice",
-      title: "Jam session – freestyle MTB/BMX",
-      desc: "Profi jezdci vyladí triky před víkendovou AIRBAG SHOW." },
+      title: { cs: "Jam session - freestyle MTB/BMX",
+               en: "Jam Session - Freestyle MTB/BMX" },
+      desc:  { cs: "Profi jezdci vyladí triky před víkendovou AIRBAG SHOW.",
+               en: "Pro riders fine-tune their tricks before the weekend AIRBAG SHOW." } },
+
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
-      title: "Edukativní e-MTB vyjížďka: Gaspi",
-      desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
-      title: "Holky holkám: workshop + vyjížďka",
-      desc: "Tereza Huříková a Simona Foxová o biomechanice, psychice a poruchách příjmu potravy ve sportu. Završeno krátkou vyjížďkou." },
+      title: { cs: "Holky holkám: workshop + vyjížďka",
+               en: "Girls to Girls: Workshop + Ride" },
+      desc:  { cs: "Tereza Huříková a Simona Foxová o biomechanice, psychice a poruchách příjmu potravy ve sportu. Završeno krátkou vyjížďkou.",
+               en: "Tereza Huříková and Simona Foxová on biomechanics, psychology and eating disorders in sports. Concluded with a short ride." } },
+
     { day: "fri", allDay: false, time: "17:15", duration: null, type: "zavod",
-      title: "XCC - Women U23",
-      desc: "Krátký, dynamický závod na cca 20-25 minut kategorie Women U23.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
+      title: { cs: "XCC - Women U23",
+               en: "XCC - Women U23" },
+      desc:  { cs: "Krátký, dynamický závod na cca 20-25 minut kategorie Women U23.",
+               en: "A short, dynamic race of approximately 20-25 minutes in the Women U23 category." },
+      link: URL_XCC },
+
     { day: "fri", allDay: false, time: "18:05", duration: null, type: "zavod",
-      title: "XCC - Men U23",
-      desc: "Krátký, dynamický závod na cca 20-25 minut kategorie Men U23.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
+      title: { cs: "XCC - Men U23",
+               en: "XCC - Men U23" },
+      desc:  { cs: "Krátký, dynamický závod na cca 20-25 minut kategorie Men U23.",
+               en: "A short, dynamic race of approximately 20-25 minutes in the Men U23 category." },
+      link: URL_XCC },
+
     { day: "fri", allDay: false, time: "18:40", duration: 30, type: "talkshow",
-      title: "Talk Show Daniela Stacha",
-      desc: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha." },
+      title: { cs: "Talk Show Daniela Stacha",
+               en: "Talk Show with Daniel Stach" },
+      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
+               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+
     { day: "fri", allDay: true, time: null, duration: null, type: "testfest",
-      title: "Test Fest [10-19h]",
-      desc: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny." },
+      title: { cs: "Test Fest [10-19h]",
+               en: "Test Fest [10 AM - 7 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
 
-    // ─── SOBOTA 23. 5. ───
+
+    // ─── SOBOTA 23. 5. / SATURDAY MAY 23 ───
     { day: "sat", allDay: false, time: "09:00", duration: null, type: "zavod",
-      title: "XCO - UCI Junior Series - Men Junior",
-      desc: "Závod kategorie Men Junior na oficiální trati olympijského cross-country (XCO)",
-      link: "https://www.mtbnmnm.com/cs/race-program/junior-series" },
-    { day: "sat", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
-      title: "Edukativní e-MTB vyjížďka: Gaspi",
-      desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
-    { day: "sat", allDay: false, time: "10:20", duration: null, type: "exhibice",
-      title: "AIRBAG SHOW",
-      desc: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků." },
-    { day: "sat", allDay: false, time: "10:40", duration: null, type: "exhibice",
-      title: "BMX SHOW",
-      desc: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě." },
-    { day: "sat", allDay: false, time: "11:20", duration: null, type: "zavod",
-      title: "XCC - Women Elite",
-      desc: "Krátký, dynamický závod na cca 20-25 minut kategorie Women Elite.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
-    { day: "sat", allDay: false, time: "12:10", duration: null, type: "zavod",
-      title: "XCC - Men Elite",
-      desc: "Krátký, dynamický závod na cca 20-25 minut kategorie Men Elite.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xcc" },
-    { day: "sat", allDay: false, time: "12:45", duration: 45, type: "talkshow",
-      title: "Autogramiáda elitních XCO jezdců - KOMA",
-      desc: "Získejte podpis hvězd světového poháru horských kol." },
-    { day: "sat", allDay: false, time: "13:25", duration: 25, type: "talkshow",
-      title: "Talk Show Daniela Stacha",
-      desc: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha." },
-    { day: "sat", allDay: false, time: "13:30", duration: 20, type: "talkshow",
-      title: "Projekt Czech Cycling Academy - Office Area",
-      desc: "Zdeněk Štybar představuje projekt pro mladé cyklistické naděje." },
-    { day: "sat", allDay: false, time: "14:00", duration: null, type: "zavod",
-      title: "XCO - Women U23",
-      desc: "Závod kategorie Women U23 na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xco" },
-    { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: "Edukativní e-MTB vyjížďka: Gaspi",
-      desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
-    { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
-      title: "AIRBAG SHOW",
-      desc: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků." },
-    { day: "sat", allDay: false, time: "15:35", duration: null, type: "exhibice",
-      title: "BMX SHOW",
-      desc: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě." },
-    { day: "sat", allDay: false, time: "16:00", duration: null, type: "zavod",
-      title: "XCO - Men U23",
-      desc: "Závod kategorie Men U23 na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xco" },
-    { day: "sat", allDay: false, time: "16:00", duration: 60, type: "vyjizd",
-      title: "ABUS ride & jump: Jakub Vencl",
-      desc: "Naučte se základní i pokročilejší techniku skákání na kole s Jakubem Venclem." },
-    { day: "sat", allDay: false, time: "16:15", duration: null, type: "talkshow",
-      title: "Promítání MS v hokeji: Česko – Slovensko",
-      desc: "Veřejná projekce zápasu na LED obrazovce v cateringové zóně." },
-    { day: "sat", allDay: false, time: "17:45", duration: null, type: "exhibice",
-      title: "AIRBAG SHOW",
-      desc: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků." },
-    { day: "sat", allDay: false, time: "18:15", duration: null, type: "exhibice",
-      title: "BMX SHOW",
-      desc: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě." },
-    { day: "sat", allDay: false, time: "18:45", duration: 30, type: "talkshow",
-      title: "Projekt Czech Cycling Academy - Office Area",
-      desc: "Zdeněk Štybar představuje projekt pro mladé cyklistické naděje." },
-    { day: "sat", allDay: false, time: "19:15", duration: 25, type: "talkshow",
-      title: "Talk Show Daniela Stacha",
-      desc: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha." },
-    { day: "sat", allDay: false, time: "20:30", duration: 150, type: "talkshow",
-      title: "DJ set: DJ Lucky Boy",
-      desc: "DJ Lucky Boy se postará o večerní atmosféru. Powered by Monster Energy." },
-    { day: "sat", allDay: false, time: "21:00", duration: null, type: "zavod",
-      title: "Night Race & MTB party",
-      desc: "Fanděte hvězdám, ale svezte se i vy! Veřejný noční závod pro každého.",
-      link: "https://www.mtbnmnm.com/cs/side-events/night-race" },
-    { day: "sat", allDay: true, time: null, duration: null, type: "expo",
-      title: "Fan Zóna Kraje Vysočina [9-18h]",
-      desc: "Virtuální biatlonová střelnice s cenami, Fruit Bike a fotokoutek." },
-    { day: "sat", allDay: true, time: null, duration: null, type: "expo",
-      title: "BESIP roadshow [9-18h]",
-      desc: "Interaktivní vzdělávání o bezpečnosti cyklistů a prevenci na silnicích." },
-    { day: "sat", allDay: true, time: null, duration: null, type: "testfest",
-      title: "Test Fest [10-19h]",
-      desc: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny." },
+      title: { cs: "XCO - UCI Junior Series - Men Junior",
+               en: "XCO - UCI Junior Series - Men Junior" },
+      desc:  { cs: "Závod kategorie Men Junior na oficiální trati olympijského cross-country (XCO)",
+               en: "Men Junior race on the official Olympic cross-country (XCO) track." },
+      link: URL_JUNIORSERIES },
 
-    // ─── NEDĚLE 24. 5. ───
+    { day: "sat", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+
+    { day: "sat", allDay: false, time: "10:20", duration: null, type: "exhibice",
+      title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
+      desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
+               en: "Top Czech freestyle riders in a show full of incredible tricks." } },
+
+    { day: "sat", allDay: false, time: "10:40", duration: null, type: "exhibice",
+      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
+               en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
+
+    { day: "sat", allDay: false, time: "11:20", duration: null, type: "zavod",
+      title: { cs: "XCC - Women Elite", en: "XCC - Women Elite" },
+      desc:  { cs: "Krátký, dynamický závod na cca 20-25 minut kategorie Women Elite.",
+               en: "A short, dynamic race of approximately 20-25 minutes in the Women Elite category." },
+      link: URL_XCC },
+
+    { day: "sat", allDay: false, time: "12:10", duration: null, type: "zavod",
+      title: { cs: "XCC - Men Elite", en: "XCC - Men Elite" },
+      desc:  { cs: "Krátký, dynamický závod na cca 20-25 minut kategorie Men Elite.",
+               en: "A short, dynamic race of approximately 20-25 minutes in the Men Elite category." },
+      link: URL_XCC },
+
+    { day: "sat", allDay: false, time: "12:45", duration: 45, type: "talkshow",
+      title: { cs: "Autogramiáda elitních XCO jezdců - KOMA",
+               en: "Autograph Session with Elite XCO Riders - KOMA" },
+      desc:  { cs: "Získejte podpis hvězd světového poháru horských kol.",
+               en: "Get autographs from the stars of the MTB World Cup." } },
+
+    { day: "sat", allDay: false, time: "13:25", duration: 25, type: "talkshow",
+      title: { cs: "Talk Show Daniela Stacha",
+               en: "Talk Show with Daniel Stach" },
+      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
+               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+
+    { day: "sat", allDay: false, time: "13:30", duration: 20, type: "talkshow",
+      title: { cs: "Projekt Czech Cycling Academy - Office Area",
+               en: "Czech Cycling Academy Project - Office Area" },
+      desc:  { cs: "Zdeněk Štybar představuje projekt pro mladé cyklistické naděje.",
+               en: "Zdeněk Štybar presents his project for young cycling talents." } },
+
+    { day: "sat", allDay: false, time: "14:00", duration: null, type: "zavod",
+      title: { cs: "XCO - Women U23", en: "XCO - Women U23" },
+      desc:  { cs: "Závod kategorie Women U23 na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
+               en: "Women U23 race on the Olympic cross-country track full of obstacles, fast descents and demanding climbs." },
+      link: URL_XCO },
+
+    { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+
+    { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
+      title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
+      desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
+               en: "Top Czech freestyle riders in a show full of incredible tricks." } },
+
+    { day: "sat", allDay: false, time: "15:35", duration: null, type: "exhibice",
+      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
+               en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
+
+    { day: "sat", allDay: false, time: "16:00", duration: null, type: "zavod",
+      title: { cs: "XCO - Men U23", en: "XCO - Men U23" },
+      desc:  { cs: "Závod kategorie Men U23 na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
+               en: "Men U23 race on the Olympic cross-country track full of obstacles, fast descents and demanding climbs." },
+      link: URL_XCO },
+
+    { day: "sat", allDay: false, time: "16:00", duration: 60, type: "vyjizd",
+      title: { cs: "ABUS ride & jump: Jakub Vencl",
+               en: "ABUS Ride & Jump: Jakub Vencl" },
+      desc:  { cs: "Naučte se základní i pokročilejší techniku skákání na kole s Jakubem Venclem.",
+               en: "Learn basic and advanced jumping techniques on the bike with Jakub Vencl." } },
+
+    { day: "sat", allDay: false, time: "16:15", duration: null, type: "talkshow",
+      title: { cs: "Promítání MS v hokeji: Česko - Slovensko",
+               en: "Hockey World Championship Screening: Czech Republic - Slovakia" },
+      desc:  { cs: "Veřejná projekce zápasu na LED obrazovce v cateringové zóně.",
+               en: "Public screening of the match on the LED screen in the catering zone." } },
+
+    { day: "sat", allDay: false, time: "17:45", duration: null, type: "exhibice",
+      title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
+      desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
+               en: "Top Czech freestyle riders in a show full of incredible tricks." } },
+
+    { day: "sat", allDay: false, time: "18:15", duration: null, type: "exhibice",
+      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
+               en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
+
+    { day: "sat", allDay: false, time: "18:45", duration: 30, type: "talkshow",
+      title: { cs: "Projekt Czech Cycling Academy - Office Area",
+               en: "Czech Cycling Academy Project - Office Area" },
+      desc:  { cs: "Zdeněk Štybar představuje projekt pro mladé cyklistické naděje.",
+               en: "Zdeněk Štybar presents his project for young cycling talents." } },
+
+    { day: "sat", allDay: false, time: "19:15", duration: 25, type: "talkshow",
+      title: { cs: "Talk Show Daniela Stacha",
+               en: "Talk Show with Daniel Stach" },
+      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
+               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+
+    { day: "sat", allDay: false, time: "20:30", duration: 150, type: "talkshow",
+      title: { cs: "DJ set: DJ Lucky Boy", en: "DJ Set: DJ Lucky Boy" },
+      desc:  { cs: "DJ Lucky Boy se postará o večerní atmosféru. Powered by Monster Energy.",
+               en: "DJ Lucky Boy will take care of the evening atmosphere. Powered by Monster Energy." } },
+
+    { day: "sat", allDay: false, time: "21:00", duration: null, type: "zavod",
+      title: { cs: "Night Race & MTB party",
+               en: "Night Race & MTB Party" },
+      desc:  { cs: "Fanděte hvězdám, ale svezte se i vy! Veřejný noční závod pro každého.",
+               en: "Cheer for the stars, but ride yourself too! A public night race for everyone." },
+      link: URL_NIGHTRACE },
+
+    { day: "sat", allDay: true, time: null, duration: null, type: "expo",
+      title: { cs: "Fan Zóna Kraje Vysočina [9-18h]",
+               en: "Vysočina Region Fan Zone [9 AM - 6 PM]" },
+      desc:  { cs: "Virtuální biatlonová střelnice s cenami, Fruit Bike a fotokoutek.",
+               en: "Virtual biathlon shooting range with prizes, Fruit Bike and photo corner." } },
+
+    { day: "sat", allDay: true, time: null, duration: null, type: "expo",
+      title: { cs: "BESIP roadshow [9-18h]",
+               en: "BESIP Roadshow [9 AM - 6 PM]" },
+      desc:  { cs: "Interaktivní vzdělávání o bezpečnosti cyklistů a prevenci na silnicích.",
+               en: "Interactive education on cyclist safety and road traffic prevention." } },
+
+    { day: "sat", allDay: true, time: null, duration: null, type: "testfest",
+      title: { cs: "Test Fest [10-19h]",
+               en: "Test Fest [10 AM - 7 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+
+
+    // ─── NEDĚLE 24. 5. / SUNDAY MAY 24 ───
     { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
-      title: "Edukativní e-MTB vyjížďka: Gaspi",
-      desc: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch." },
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+
     { day: "sun", allDay: false, time: "09:20", duration: 20, type: "talkshow",
-      title: "Saxo ROBE music show",
-      desc: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku." },
+      title: { cs: "Saxo ROBE music show",
+               en: "Saxo ROBE Music Show" },
+      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
+               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
+
     { day: "sun", allDay: false, time: "10:00", duration: null, type: "zavod",
-      title: "XCO - UCI Junior Series - Women Junior",
-      desc: "Závod kategorie Women Junior na oficiální trati olympijského cross-country (XCO)",
-      link: "https://www.mtbnmnm.com/cs/race-program/junior-series" },
+      title: { cs: "XCO - UCI Junior Series - Women Junior",
+               en: "XCO - UCI Junior Series - Women Junior" },
+      desc:  { cs: "Závod kategorie Women Junior na oficiální trati olympijského cross-country (XCO)",
+               en: "Women Junior race on the official Olympic cross-country (XCO) track." },
+      link: URL_JUNIORSERIES },
+
     { day: "sun", allDay: false, time: "11:00", duration: 15, type: "talkshow",
-      title: "Saxo ROBE music show",
-      desc: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku." },
+      title: { cs: "Saxo ROBE music show",
+               en: "Saxo ROBE Music Show" },
+      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
+               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
+
     { day: "sun", allDay: false, time: "11:15", duration: 25, type: "talkshow",
-      title: "Talk Show Daniela Stacha: Zdeněk Štybar",
-      desc: "Zdeněk Štybar pod palbou zvídavých otázek Daniela Stacha." },
+      title: { cs: "Talk Show Daniela Stacha: Zdeněk Štybar",
+               en: "Talk Show with Daniel Stach: Zdeněk Štybar" },
+      desc:  { cs: "Zdeněk Štybar pod palbou zvídavých otázek Daniela Stacha.",
+               en: "Zdeněk Štybar under fire from Daniel Stach's curious questions." } },
+
     { day: "sun", allDay: false, time: "11:15", duration: null, type: "exhibice",
-      title: "AIRBAG SHOW",
-      desc: "Nedělní freestyle setkání s nejlepšími českými jezdci." },
+      title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
+      desc:  { cs: "Nedělní freestyle setkání s nejlepšími českými jezdci.",
+               en: "Sunday freestyle meetup with the best Czech riders." } },
+
     { day: "sun", allDay: false, time: "11:30", duration: null, type: "exhibice",
-      title: "BMX SHOW",
-      desc: "Ranní BMX triky na ALLWYN U-rampě – warmup před XCO." },
+      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      desc:  { cs: "Ranní BMX triky na ALLWYN U-rampě - warmup před XCO.",
+               en: "Morning BMX tricks on the ALLWYN U-ramp - warmup before XCO." } },
+
     { day: "sun", allDay: false, time: "12:00", duration: null, type: "zavod",
-      title: "XCO - Women Elite",
-      desc: "Závod kategorie Women Elite na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xco" },
+      title: { cs: "XCO - Women Elite", en: "XCO - Women Elite" },
+      desc:  { cs: "Závod kategorie Women Elite na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
+               en: "Women Elite race on the Olympic cross-country track full of obstacles, fast descents and demanding climbs." },
+      link: URL_XCO },
+
     { day: "sun", allDay: false, time: "13:30", duration: null, type: "exhibice",
-      title: "AIRBAG SHOW",
-      desc: "Předzávodní freestyle dávka adrenalinu pro fanoušky." },
+      title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
+      desc:  { cs: "Předzávodní freestyle dávka adrenalinu pro fanoušky.",
+               en: "Pre-race freestyle adrenaline dose for fans." } },
+
     { day: "sun", allDay: false, time: "14:00", duration: null, type: "exhibice",
-      title: "BMX SHOW",
-      desc: "Závěrečné BMX vystoupení víkendu na ALLWYN U-rampě." },
+      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      desc:  { cs: "Závěrečné BMX vystoupení víkendu na ALLWYN U-rampě.",
+               en: "Final BMX performance of the weekend on the ALLWYN U-ramp." } },
+
     { day: "sun", allDay: false, time: "14:00", duration: 25, type: "talkshow",
-      title: "Talk Show Daniela Stacha",
-      desc: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha." },
+      title: { cs: "Talk Show Daniela Stacha",
+               en: "Talk Show with Daniel Stach" },
+      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
+               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+
     { day: "sun", allDay: false, time: "14:25", duration: 15, type: "talkshow",
-      title: "Saxo ROBE music show",
-      desc: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku." },
+      title: { cs: "Saxo ROBE music show",
+               en: "Saxo ROBE Music Show" },
+      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
+               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
+
     { day: "sun", allDay: false, time: "15:00", duration: null, type: "zavod",
-      title: "XCO - Men Elite",
-      desc: "Závod kategorie Men Elite na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
-      link: "https://www.mtbnmnm.com/cs/race-program/xco" },
+      title: { cs: "XCO - Men Elite", en: "XCO - Men Elite" },
+      desc:  { cs: "Závod kategorie Men Elite na olympijské cross-country trati plné překážek, rychlých sjezdů a náročných výjezdů.",
+               en: "Men Elite race on the Olympic cross-country track full of obstacles, fast descents and demanding climbs." },
+      link: URL_XCO },
+
     { day: "sun", allDay: true, time: null, duration: null, type: "expo",
-      title: "Nadace ČEZ – EPP Pomáhej pohybem [9-14h]",
-      desc: "Podpořte vlastními silami vybrané charitativní projekty přes aplikaci EPP Pomáhej pohybem. Oranžový přívěs Nadace ČEZ." },
+      title: { cs: "Nadace ČEZ - EPP Pomáhej pohybem [9-14h]",
+               en: "ČEZ Foundation - EPP Help by Movement [9 AM - 2 PM]" },
+      desc:  { cs: "Podpořte vlastními silami vybrané charitativní projekty přes aplikaci EPP Pomáhej pohybem. Oranžový přívěs Nadace ČEZ.",
+               en: "Support selected charity projects through the EPP Help by Movement app using your own physical effort. ČEZ Foundation orange trailer." } },
+
     { day: "sun", allDay: true, time: null, duration: null, type: "expo",
-      title: "Fan Zóna Kraje Vysočina [9-17h]",
-      desc: "Virtuální biatlonová střelnice s cenami, Fruit Bike a fotokoutek." },
+      title: { cs: "Fan Zóna Kraje Vysočina [9-17h]",
+               en: "Vysočina Region Fan Zone [9 AM - 5 PM]" },
+      desc:  { cs: "Virtuální biatlonová střelnice s cenami, Fruit Bike a fotokoutek.",
+               en: "Virtual biathlon shooting range with prizes, Fruit Bike and photo corner." } },
+
     { day: "sun", allDay: true, time: null, duration: null, type: "testfest",
-      title: "Test Fest [9-15h]",
-      desc: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny." },
+      title: { cs: "Test Fest [9-15h]",
+               en: "Test Fest [9 AM - 3 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
   ];
 
   // ╔══════════════════════════════════════════════════════════╗
@@ -459,6 +641,32 @@
   `;
 
   // ╔══════════════════════════════════════════════════════════╗
+  // ║  POMOCNÉ FUNKCE                                           ║
+  // ╚══════════════════════════════════════════════════════════╝
+
+  // Zjisti aktuální jazyk:
+  //   1. explicit attribut <harmonogram-widget lang="cs|en">
+  //   2. URL cesta začíná /cs (např. /cs/schedule) → CS
+  //   3. jinak EN (např. /schedule)
+  function detectLang(element) {
+    if (element && element.hasAttribute('lang')) {
+      const v = element.getAttribute('lang').toLowerCase();
+      if (v === 'cs' || v === 'cz') return 'cs';
+      if (v === 'en') return 'en';
+    }
+    const path = window.location.pathname || '';
+    if (path === '/cs' || path.startsWith('/cs/')) return 'cs';
+    return 'en';
+  }
+
+  // Vrať překlad z multi-language objektu, fallback na CS pak EN
+  function tx(value, lang) {
+    if (value == null) return '';
+    if (typeof value === 'string') return value;
+    return value[lang] || value.cs || value.en || '';
+  }
+
+  // ╔══════════════════════════════════════════════════════════╗
   // ║  WIDGET CLASS                                             ║
   // ╚══════════════════════════════════════════════════════════╝
 
@@ -466,12 +674,11 @@
     constructor() {
       super();
       this.attachShadow({ mode: 'open' });
+      this._lang          = 'en';                        // přepíše se v connectedCallback
       this._activeDay     = this._pickInitialDay();
       this._activeFilters = new Set(['all']);
     }
 
-    // Auto-výběr záložky: pokud dnešní datum odpovídá některému dni,
-    // přepne se na něj. Jinak první den.
     _pickInitialDay() {
       const t = new Date();
       const yyyy = t.getFullYear();
@@ -483,11 +690,11 @@
     }
 
     connectedCallback() {
+      this._lang = detectLang(this);
       this._loadFont();
       this._render();
     }
 
-    // Načti Montserrat z Google Fonts (jen jednou pro celou stránku)
     _loadFont() {
       if (document.head.querySelector('link[data-harmonogram-font]')) return;
       const link = document.createElement('link');
@@ -497,13 +704,20 @@
       document.head.appendChild(link);
     }
 
+    _t(key) {
+      return STRINGS[this._lang] && STRINGS[this._lang][key]
+        || STRINGS.cs[key] || '';
+    }
+
     _fmtDuration(min) {
       if (!min) return '';
       const h = Math.floor(min / 60);
       const m = min % 60;
-      if (h === 0) return `${m} min`;
-      if (m === 0) return `${h} hod`;
-      return `${h}:${String(m).padStart(2, '0')} hod`;
+      const minLabel = this._t('duration_min');
+      const hLabel   = this._t('duration_h');
+      if (h === 0) return `${m} ${minLabel}`;
+      if (m === 0) return `${h} ${hLabel}`;
+      return `${h}:${String(m).padStart(2, '0')} ${hLabel}`;
     }
 
     _isVisible(e) {
@@ -511,14 +725,14 @@
     }
 
     _renderHeading() {
-      return `<h1 class="schedule-heading">Harmonogram</h1>`;
+      return `<h1 class="schedule-heading">${this._t('heading')}</h1>`;
     }
 
     _renderTabs() {
       return `<div class="tabs">${
         DAYS.map(d => `
           <button class="tab-btn${d.id === this._activeDay ? ' active' : ''}" data-day="${d.id}">
-            ${d.label}
+            ${tx(d.label, this._lang)}
           </button>`).join('')
       }</div>`;
     }
@@ -526,24 +740,29 @@
     _renderFilters() {
       const allActive = this._activeFilters.has('all');
       return `<div class="filters">
-        <span class="filter-label">Filtr:</span>
-        <button class="filter-btn${allActive ? ' active' : ''}" data-type="all">Vše</button>
+        <span class="filter-label">${this._t('filter_label')}</span>
+        <button class="filter-btn${allActive ? ' active' : ''}" data-type="all">${this._t('all')}</button>
         ${Object.entries(TYPES).map(([id, t]) => `
           <button class="filter-btn${!allActive && this._activeFilters.has(id) ? ' active' : ''}" data-type="${id}">
-            <span class="dot" style="background:${t.dot}"></span>${t.label}
+            <span class="dot" style="background:${t.dot}"></span>${tx(t.label, this._lang)}
           </button>`).join('')}
       </div>`;
     }
 
     _renderCard(e) {
-      const dur = e.duration ? `<span class="event-duration">· ${this._fmtDuration(e.duration)}</span>` : '';
+      const dur   = e.duration ? `<span class="event-duration">· ${this._fmtDuration(e.duration)}</span>` : '';
+      const title = tx(e.title, this._lang);
+      const desc  = tx(e.desc,  this._lang);
+      const tag   = tx(TYPES[e.type].label, this._lang);
+      const link  = tx(e.link,  this._lang);
+
       const inner = `
         ${!e.allDay ? `<div class="event-time">${e.time}</div>` : ''}
         <div class="event-body">
-          <div class="event-title">${e.title}</div>
-          ${e.desc ? `<div class="event-desc">${e.desc}</div>` : ''}
+          <div class="event-title">${title}</div>
+          ${desc ? `<div class="event-desc">${desc}</div>` : ''}
           <div class="event-meta">
-            <span class="event-tag">${TYPES[e.type].label}</span>
+            <span class="event-tag">${tag}</span>
             ${dur}
           </div>
         </div>`;
@@ -551,9 +770,8 @@
       const cls    = `event-card${this._isVisible(e) ? '' : ' hidden'}`;
       const target = e.linkBlank ? ' target="_blank" rel="noopener"' : '';
 
-      // Pokud má event link → render jako <a>, jinak <div>
-      return e.link
-        ? `<a class="${cls}" data-type="${e.type}" href="${e.link}"${target}>${inner}</a>`
+      return link
+        ? `<a class="${cls}" data-type="${e.type}" href="${link}"${target}>${inner}</a>`
         : `<div class="${cls}" data-type="${e.type}">${inner}</div>`;
     }
 
@@ -563,16 +781,19 @@
       );
       if (list.length === 0) return '';
 
-      const cards = list.map(h => `
-        <div class="host-card">
-          <div>
-            <div class="host-name">${h.name}</div>
-            ${h.role ? `<div class="host-role">${h.role}</div>` : ''}
-          </div>
-        </div>`).join('');
+      const cards = list.map(h => {
+        const role = tx(h.role, this._lang);
+        return `
+          <div class="host-card">
+            <div>
+              <div class="host-name">${h.name}</div>
+              ${role ? `<div class="host-role">${role}</div>` : ''}
+            </div>
+          </div>`;
+      }).join('');
 
       return `<div class="hosts-section">
-        <div class="col-header">S kým se potkáte</div>
+        <div class="col-header">${this._t('hosts_header')}</div>
         <div class="event-list">${cards}</div>
       </div>`;
     }
@@ -584,19 +805,19 @@
 
       return `<div class="columns">
         <div>
-          <div class="col-header">Časový program</div>
+          <div class="col-header">${this._t('timed_header')}</div>
           <div class="event-list">
             ${timed.map(e => this._renderCard(e)).join('')}
             ${timed.filter(e => this._isVisible(e)).length === 0
-              ? `<p class="empty-msg">Žádné události pro tento filtr.</p>` : ''}
+              ? `<p class="empty-msg">${this._t('empty_events')}</p>` : ''}
           </div>
         </div>
         <div>
-          <div class="col-header">Celodenní aktivity</div>
+          <div class="col-header">${this._t('allday_header')}</div>
           <div class="event-list">
             ${allDay.map(e => this._renderCard(e)).join('')}
             ${allDay.filter(e => this._isVisible(e)).length === 0
-              ? `<p class="empty-msg">Žádné aktivity pro tento filtr.</p>` : ''}
+              ? `<p class="empty-msg">${this._t('empty_allday')}</p>` : ''}
           </div>
           ${this._renderHosts()}
         </div>
@@ -634,9 +855,17 @@
         });
       });
     }
+
+    // Reaguj na změnu lang attribute (pro Wix Velo override)
+    static get observedAttributes() { return ['lang']; }
+    attributeChangedCallback(name, oldVal, newVal) {
+      if (name === 'lang' && this.shadowRoot && this.shadowRoot.innerHTML) {
+        this._lang = detectLang(this);
+        this._render();
+      }
+    }
   }
 
-  // Registrace custom elementu
   if (!customElements.get('harmonogram-widget')) {
     customElements.define('harmonogram-widget', HarmonogramWidget);
   }
