@@ -344,12 +344,6 @@
       desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
                en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
 
-    { day: "sat", allDay: false, time: "13:20", duration: 20, type: "talkshow",
-      title: { cs: "Saxo ROBE music show - Radim Nowak",
-               en: "Saxo ROBE Music Show - Radim Nowak" },
-      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
-               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
-
     { day: "sat", allDay: false, time: "19:40", duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show - Radim Nowak",
                en: "Saxo ROBE Music Show - Radim Nowak" },
