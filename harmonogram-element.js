@@ -79,7 +79,7 @@
   //   - jméno je sdílené (jazykově neutrální)
   //   - role volitelná, prázdný string se nezobrazí
   const HOSTS = [
-    { name: "Richard „Gaspi“ Gasperotti", role: { cs: "", en: "" }, days: ["fri"] },
+    { name: "Richard 'Gaspi' Gasperotti", role: { cs: "", en: "" }, days: ["fri"] },
     { name: "Tereza Huříková",            role: { cs: "", en: "" }, days: ["fri"] },
     { name: "Daniel Stach",               role: { cs: "", en: "" }, days: ["fri", "sat", "sun"] },
     { name: "Kateřina Neumannová",        role: { cs: "", en: "" }, days: ["fri", "sat"] },
@@ -168,8 +168,8 @@
     { day: "fri", allDay: false, time: "12:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "fri", allDay: false, time: "13:00", duration: 240, type: "exhibice",
       title: { cs: "Jam session - freestyle MTB/BMX",
@@ -180,8 +180,8 @@
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
       title: { cs: "Holky holkám: workshop + vyjížďka",
@@ -233,8 +233,8 @@
     { day: "sat", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "sat", allDay: false, time: "10:20", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -283,18 +283,16 @@
       link: URL_XCO },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi”,
-               en: "Educational e-MTB Ride: Gaspi” },
-      desc:  { cs: "Richard „Gaspi” Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.”,
-               en: "Richard „Gaspi” Gasperotti will teach you motor assistance control, ABS braking and maintenance.” } },
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Girls-only ride s @holkazocele",
-               en: "Girls-only ride with @holkazocele" },
+      title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>",
+               en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>" },
       desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
-               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." },
-      link: "https://www.instagram.com/holkazocele",
-      linkBlank: true },
+               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." } },
 
     { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -396,21 +394,19 @@
 
 
     // ─── NEDĚLE 24. 5. / SUNDAY MAY 24 ───
-    { day: “sun”, allDay: false, time: “09:00”, duration: 120, type: “vyjizd”,
-      title: { cs: “Edukativní e-MTB vyjížďka: Gaspi”,
-               en: “Educational e-MTB Ride: Gaspi” },
-      desc:  { cs: “Richard „Gaspi” Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.”,
-               en: “Richard „Gaspi” Gasperotti will teach you motor assistance control, ABS braking and maintenance.” } },
+    { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
+      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
+               en: "Educational e-MTB Ride: Gaspi" },
+      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
-    { day: “sun”, allDay: false, time: “09:00”, duration: 120, type: “vyjizd”,
-      title: { cs: “Girls-only ride s @dostalova_g”,
-               en: “Girls-only ride with @dostalova_g” },
-      desc:  { cs: “Gravel vyjížďka na vrchol Žďárských vrchů, 40 km v přátelském tempu.”,
-               en: “Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace.” },
-      link: “https://www.instagram.com/dostalova_g/”,
-      linkBlank: true },
+    { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
+      title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/dostalova_g/\' target=\'_blank\' rel=\'noopener\'>@dostalova_g</a>",
+               en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/dostalova_g/\' target=\'_blank\' rel=\'noopener\'>@dostalova_g</a>" },
+      desc:  { cs: "Gravel vyjížďka na vrchol Žďárských vrchů, 40 km v přátelském tempu.",
+               en: "Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace." } },
 
-    { day: “sun”, allDay: false, time: “09:20”, duration: 20, type: "talkshow",
+    { day: "sun", allDay: false, time: "09:20", duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show",
                en: "Saxo ROBE Music Show" },
       desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
@@ -703,6 +699,10 @@
       font-size: 12px; color: var(--text-muted);
       margin-top: 3px; line-height: 1.4;
     }
+
+    /* Inline Instagram link v titulku akce */
+    .ig-link { color: var(--c-vyjizd); text-decoration: none; }
+    .ig-link:hover { text-decoration: underline; }
 
     /* Sekce "Spousta dalších akcí" */
     .extras-section { margin-top: 36px; }
