@@ -495,8 +495,8 @@
   ];
 
   const EXTRAS = [
-    { cs: "Nový PŘEDZÁVODNÍ PROGRAM: 15minutová talk show Míry Lence a Patricie Srnské před každým závodem odhalí hlavní favority následujícího závodu, odkryje pikantnosti z pelotonu a představí závodníky na startovní čáře i v trochu jiném světle, než jak je znáte!",
-      en: "New PRE-RACE PROGRAM: A 15-minute talk show by Míra Lenc and Patricia Srnská before each race will reveal the main favorites of the following race, uncover the piquancy of the peloton and present the competitors on the starting line in a slightly different light than you know them!" },
+    { cs: "Nový PŘEDZÁVODNÍ PROGRAM: 15minutová talk show Míry Lence a Patricie Srnské před každým závodem!",
+      en: "New PRE-RACE PROGRAM: A 15-minute talk show by Míra Lenc and Patricia Srnská before each race!" },
     { cs: "Online QR hry na LED obrazovkách o hodnotné ceny a britská DJka rozpoutají tu správnou předzávodní atmosféru.",
       en: "Online QR games on LED screens for valuable prizes and a British DJ will unleash the right pre-race atmosphere." },
     { cs: "O své úžasné sportovní zkušenosti se podělí Michal Prokop, Petr Vabroušek a spousta dalších sportovních celebrit.",
@@ -505,16 +505,16 @@
       en: "Shimano will bring test e-bikes equipped with the best components and drives: try them out at Shimano Test Area!" },
     { cs: "Monster Energy přiveze Manual Machine a přichystá soutěž o nejdelší manuál.",
       en: "Monster Energy will bring the Manual Machine and prepare the longest manual competition." },
-    { cs: "Czech Cycling Academy Zdeňka Štybara prověří vaše děti svým důkladným testováním a vás pobaví virtuální realitou! Nebo to bude naopak?",
-      en: "Czech Cycling Academy patronated by Zdeněk Štybar will test your children with its thorough testing and entertain you with virtual reality! Or will it be the other way around?" },
+    { cs: "Czech Cycling Academy Zdeňka Štybara prověří vaše děti svým důkladným testováním a vás pobaví virtuální realitou!",
+      en: "Czech Cycling Academy patronated by Zdeněk Štybar will test your children with its thorough testing and entertain you with virtual reality!" },
     { cs: "Specialized si připraví zábavný dětský pumptrack program.",
       en: "Specialized will prepare a fun children's pumptrack program." },
     { cs: "S ROUVY si vyzkoušíte soutěže na trenažerech i jízdu na válcích.",
       en: "With ROUVY, you will try out competitions on trainers and riding on rollers." },
-    { cs: "Elitní český rallye jezdec Filip Mareš a jeho Toyota Yaris WRC2 se ukáže fanouškům cyklistiky díky značce SUPERIOR. Světe div se, je to totiž také nadšený cyklista!",
-      en: "Elite Czech rally driver Filip Mareš and his Toyota Yaris WRC2 will show themselves to cycling fans thanks to the SUPERIOR brand. No surprise since he is also an enthusiast cyclist!" },
-    { cs: "Kateřina Neumannová, účastnice prvního olympijského závodu horských kol na OH v Atlantě 1996, porovná náročnost cross-country tratí tehdy a dnes. A jak si jízdu na trati užije její dcera a talentovaná sportovkyně Lucie?",
-      en: "Kateřina Neumannová, a participant in the first Olympic mountain bike race at the 1996 Atlanta Olympics, will compare the difficulty of cross-country courses then and now. How will her daughter and talented athlete Lucie enjoy riding on the track?" },
+    { cs: "Elitní český rallye jezdec Filip Mareš a jeho Toyota Yaris WRC2 se ukáže fanouškům cyklistiky díky značce SUPERIOR.",
+      en: "Elite Czech rally driver Filip Mareš and his Toyota Yaris WRC2 will show themselves to cycling fans thanks to the SUPERIOR brand." },
+    { cs: "Kateřina Neumannová, účastnice prvního olympijského závodu horských kol na OH v Atlantě 1996, porovná náročnost cross-country tratí tehdy a dnes.",
+      en: "Kateřina Neumannová, a participant in the first Olympic mountain bike race at the 1996 Atlanta Olympics, will compare the difficulty of cross-country courses then and now." },
   ];
 
   // ╔══════════════════════════════════════════════════════════╗
