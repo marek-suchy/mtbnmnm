@@ -166,8 +166,8 @@
                en: "Skill competitions on and off the bike plus knowledge games about sports, health and the environment." } },
 
     { day: "fri", allDay: false, time: "12:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
+      title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
+               en: "Educational e-MTB Ride: with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
@@ -178,8 +178,8 @@
                en: "Pro riders fine-tune their tricks before the weekend AIRBAG SHOW." } },
 
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
+      title: { cs: "Edukativní e-MTB vyjížďka: s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
+               en: "Educational e-MTB Ride: with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
@@ -231,8 +231,8 @@
       link: URL_JUNIORSERIES },
 
     { day: "sat", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
+      title: { cs: "Edukativní e-MTB vyjížďka: s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
+               en: "Educational e-MTB Ride: with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
@@ -283,8 +283,8 @@
       link: URL_XCO },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
+      title: { cs: "Edukativní e-MTB vyjížďka: s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
+               en: "Educational e-MTB Ride: with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
@@ -311,8 +311,8 @@
       link: URL_XCO },
 
     { day: "sat", allDay: false, time: "16:00", duration: 60, type: "vyjizd",
-      title: { cs: "ABUS ride & jump: Jakub Vencl",
-               en: "ABUS Ride & Jump: Jakub Vencl" },
+      title: { cs: "ABUS ride & jump s <a class=\'ig-link\' href=\'https://www.instagram.com/jakubvencl\' target=\'_blank\' rel=\'noopener\'>@jakubvencl</a>",
+               en: "ABUS Ride & Jump with <a class=\'ig-link\' href=\'https://www.instagram.com/jakubvencl\' target=\'_blank\' rel=\'noopener\'>@jakubvencl</a>" },
       desc:  { cs: "Naučte se základní i pokročilejší techniku skákání na kole s Jakubem Venclem.",
                en: "Learn basic and advanced jumping techniques on the bike with Jakub Vencl." } },
 
@@ -395,8 +395,8 @@
 
     // ─── NEDĚLE 24. 5. / SUNDAY MAY 24 ───
     { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
+      title: { cs: "Edukativní e-MTB vyjížďka: s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
+               en: "Educational e-MTB Ride: with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
