@@ -40,6 +40,7 @@
       empty_allday:   "Žádné aktivity pro tento filtr.",
       duration_min:   "min",
       duration_h:     "hod",
+      extras_heading: "Spousta další akce během celého závodního víkendu",
     },
     en: {
       heading:        "Schedule",
@@ -52,6 +53,7 @@
       empty_allday:   "No activities match this filter.",
       duration_min:   "min",
       duration_h:     "h",
+      extras_heading: "Plenty More Activities Throughout the Race Weekend",
     },
   };
 
@@ -136,7 +138,7 @@
                en: "The 40 fastest junior women fight for victory on the XCC circuit." },
       link: URL_XCC },
 
-    { day: "thu", allDay: false, time: "18:25", duration: null, type: "zavod",
+    { day: "thu", allDay: false, time: "18:35", duration: null, type: "zavod",
       title: { cs: "XCC - Men Junior: Finále",
                en: "XCC - Men Junior: Final" },
       desc:  { cs: "40 nejrychlejších juniorů se popere o vítězství na XCC okruhu.",
@@ -163,11 +165,11 @@
       desc:  { cs: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí.",
                en: "Skill competitions on and off the bike plus knowledge games about sports, health and the environment." } },
 
-    { day: "fri", allDay: true, time: null, duration: null, type: "vyjizd",
+    { day: "fri", allDay: false, time: "12:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "fri", allDay: false, time: "13:00", duration: 240, type: "exhibice",
       title: { cs: "Jam session - freestyle MTB/BMX",
@@ -178,8 +180,8 @@
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
       title: { cs: "Holky holkám: workshop + vyjížďka",
@@ -201,17 +203,23 @@
                en: "A short, dynamic race of approximately 20-25 minutes in the Men U23 category." },
       link: URL_XCC },
 
-    { day: "fri", allDay: false, time: "18:40", duration: 30, type: "talkshow",
-      title: { cs: "Talk Show Daniela Stacha",
-               en: "Talk Show with Daniel Stach" },
-      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
-               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
-
     { day: "fri", allDay: true, time: null, duration: null, type: "testfest",
       title: { cs: "Test Fest [10-19h]",
                en: "Test Fest [10 AM - 7 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
                en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+
+    { day: "fri", allDay: false, time: "16:20", duration: 20, type: "exhibice",
+      title: { cs: "BMX & SCOOTERING SHOW předních českých jezdců",
+               en: "BMX & Scootering Show by Top Czech Riders" },
+      desc:  { cs: "Přední čeští BMX a scooter jezdci v show na ALLWYN U-rampě.",
+               en: "Top Czech BMX and scooter riders in a show on the ALLWYN U-ramp." } },
+
+    { day: "fri", allDay: false, time: "19:10", duration: 20, type: "exhibice",
+      title: { cs: "BMX & SCOOTERING SHOW předních českých jezdců",
+               en: "BMX & Scootering Show by Top Czech Riders" },
+      desc:  { cs: "Přední čeští BMX a scooter jezdci v show na ALLWYN U-rampě.",
+               en: "Top Czech BMX and scooter riders in a show on the ALLWYN U-ramp." } },
 
 
     // ─── SOBOTA 23. 5. / SATURDAY MAY 23 ───
@@ -225,8 +233,8 @@
     { day: "sat", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
       title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
                en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
+               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "sat", allDay: false, time: "10:20", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -234,7 +242,7 @@
                en: "Top Czech freestyle riders in a show full of incredible tricks." } },
 
     { day: "sat", allDay: false, time: "10:40", duration: null, type: "exhibice",
-      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
                en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
 
@@ -250,13 +258,13 @@
                en: "A short, dynamic race of approximately 20-25 minutes in the Men Elite category." },
       link: URL_XCC },
 
-    { day: "sat", allDay: false, time: "12:45", duration: 45, type: "talkshow",
+    { day: "sat", allDay: false, time: "13:30", duration: 45, type: "talkshow",
       title: { cs: "Autogramiáda elitních XCO jezdců - KOMA",
                en: "Autograph Session with Elite XCO Riders - KOMA" },
       desc:  { cs: "Získejte podpis hvězd světového poháru horských kol.",
                en: "Get autographs from the stars of the MTB World Cup." } },
 
-    { day: "sat", allDay: false, time: "13:25", duration: 25, type: "talkshow",
+    { day: "sat", allDay: false, time: "12:45", duration: 30, type: "talkshow",
       title: { cs: "Talk Show Daniela Stacha",
                en: "Talk Show with Daniel Stach" },
       desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
@@ -274,19 +282,27 @@
                en: "Women U23 race on the Olympic cross-country track full of obstacles, fast descents and demanding climbs." },
       link: URL_XCO },
 
-    { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+    { day: “sat”, allDay: false, time: “14:00”, duration: 120, type: “vyjizd”,
+      title: { cs: “Edukativní e-MTB vyjížďka: Gaspi”,
+               en: “Educational e-MTB Ride: Gaspi” },
+      desc:  { cs: “Richard „Gaspi” Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.”,
+               en: “Richard „Gaspi” Gasperotti will teach you motor assistance control, ABS braking and maintenance.” } },
 
-    { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
+    { day: “sat”, allDay: false, time: “14:00”, duration: 120, type: “vyjizd”,
+      title: { cs: “Girls-only ride s @holkazocele”,
+               en: “Girls-only ride with @holkazocele” },
+      desc:  { cs: “MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.”,
+               en: “MTB ride to the springs of Vysočina, 40 km at a friendly pace.” },
+      link: “https://www.instagram.com/holkazocele”,
+      linkBlank: true },
+
+    { day: “sat”, allDay: false, time: “15:15”, duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
       desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
                en: "Top Czech freestyle riders in a show full of incredible tricks." } },
 
     { day: "sat", allDay: false, time: "15:35", duration: null, type: "exhibice",
-      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
                en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
 
@@ -314,7 +330,7 @@
                en: "Top Czech freestyle riders in a show full of incredible tricks." } },
 
     { day: "sat", allDay: false, time: "18:15", duration: null, type: "exhibice",
-      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
                en: "Pro BMX riders showcase their skills on the ALLWYN U-ramp." } },
 
@@ -330,10 +346,28 @@
       desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
                en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
 
+    { day: "sat", allDay: false, time: "13:20", duration: 20, type: "talkshow",
+      title: { cs: "Saxo ROBE music show - Radim Nowak",
+               en: "Saxo ROBE Music Show - Radim Nowak" },
+      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
+               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
+
+    { day: "sat", allDay: false, time: "19:40", duration: 20, type: "talkshow",
+      title: { cs: "Saxo ROBE music show - Radim Nowak",
+               en: "Saxo ROBE Music Show - Radim Nowak" },
+      desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
+               en: "Saxophonist Radim Nowak gets it going from the ROBE showtruck." } },
+
     { day: "sat", allDay: false, time: "20:30", duration: 150, type: "talkshow",
       title: { cs: "DJ set: DJ Lucky Boy", en: "DJ Set: DJ Lucky Boy" },
       desc:  { cs: "DJ Lucky Boy se postará o večerní atmosféru. Powered by Monster Energy.",
                en: "DJ Lucky Boy will take care of the evening atmosphere. Powered by Monster Energy." } },
+
+    { day: "sat", allDay: false, time: "21:00", duration: 30, type: "talkshow",
+      title: { cs: "Saxo ROBE LIVE-MUSIC TRUCK",
+               en: "Saxo ROBE Live-Music Truck" },
+      desc:  { cs: "Exkluzivně pro závodníky MTB Night Race.",
+               en: "Exclusively for MTB Night Race participants." } },
 
     { day: "sat", allDay: false, time: "21:00", duration: null, type: "zavod",
       title: { cs: "Night Race & MTB party",
@@ -362,13 +396,21 @@
 
 
     // ─── NEDĚLE 24. 5. / SUNDAY MAY 24 ───
-    { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka: Gaspi",
-               en: "Educational e-MTB Ride: Gaspi" },
-      desc:  { cs: "Richard „Gaspi“ Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu. Powered by Bosch.",
-               en: "Richard „Gaspi“ Gasperotti will teach you motor assistance control, ABS braking and maintenance. Powered by Bosch." } },
+    { day: “sun”, allDay: false, time: “09:00”, duration: 120, type: “vyjizd”,
+      title: { cs: “Edukativní e-MTB vyjížďka: Gaspi”,
+               en: “Educational e-MTB Ride: Gaspi” },
+      desc:  { cs: “Richard „Gaspi” Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.”,
+               en: “Richard „Gaspi” Gasperotti will teach you motor assistance control, ABS braking and maintenance.” } },
 
-    { day: "sun", allDay: false, time: "09:20", duration: 20, type: "talkshow",
+    { day: “sun”, allDay: false, time: “09:00”, duration: 120, type: “vyjizd”,
+      title: { cs: “Girls-only ride s @dostalova_g”,
+               en: “Girls-only ride with @dostalova_g” },
+      desc:  { cs: “Gravel vyjížďka na vrchol Žďárských vrchů, 40 km v přátelském tempu.”,
+               en: “Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace.” },
+      link: “https://www.instagram.com/dostalova_g/”,
+      linkBlank: true },
+
+    { day: “sun”, allDay: false, time: “09:20”, duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show",
                en: "Saxo ROBE Music Show" },
       desc:  { cs: "Saxofonista Radim Nowak to rozjede z ROBE showtrucku.",
@@ -399,7 +441,7 @@
                en: "Sunday freestyle meetup with the best Czech riders." } },
 
     { day: "sun", allDay: false, time: "11:30", duration: null, type: "exhibice",
-      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Ranní BMX triky na ALLWYN U-rampě - warmup před XCO.",
                en: "Morning BMX tricks on the ALLWYN U-ramp - warmup before XCO." } },
 
@@ -415,7 +457,7 @@
                en: "Pre-race freestyle adrenaline dose for fans." } },
 
     { day: "sun", allDay: false, time: "14:00", duration: null, type: "exhibice",
-      title: { cs: "BMX SHOW", en: "BMX SHOW" },
+      title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Závěrečné BMX vystoupení víkendu na ALLWYN U-rampě.",
                en: "Final BMX performance of the weekend on the ALLWYN U-ramp." } },
 
@@ -454,6 +496,29 @@
                en: "Test Fest [9 AM - 3 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
                en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+  ];
+
+  const EXTRAS = [
+    { cs: "Nový PŘEDZÁVODNÍ PROGRAM: 15minutová talk show Míry Lence a Patricie Srnské před každým závodem odhalí hlavní favority následujícího závodu, odkryje pikantnosti z pelotonu a představí závodníky na startovní čáře i v trochu jiném světle, než jak je znáte!",
+      en: "New PRE-RACE PROGRAM: A 15-minute talk show by Míra Lenc and Patricia Srnská before each race will reveal the main favorites of the following race, uncover the piquancy of the peloton and present the competitors on the starting line in a slightly different light than you know them!" },
+    { cs: "Online QR hry na LED obrazovkách o hodnotné ceny a britská DJka rozpoutají tu správnou předzávodní atmosféru.",
+      en: "Online QR games on LED screens for valuable prizes and a British DJ will unleash the right pre-race atmosphere." },
+    { cs: "O své úžasné sportovní zkušenosti se podělí Michal Prokop, Petr Vabroušek a spousta dalších sportovních celebrit.",
+      en: "Michal Prokop, Petr Vabroušek and several other sport celebrities will share their amazing sports experiences." },
+    { cs: "Shimano přiveze testovací e-biky osazené těmi nejlepšími komponenty a pohony: vyzkoušejte je!",
+      en: "Shimano will bring test e-bikes equipped with the best components and drives: try them out at Shimano Test Area!" },
+    { cs: "Monster Energy přiveze Manual Machine a přichystá soutěž o nejdelší manuál.",
+      en: "Monster Energy will bring the Manual Machine and prepare the longest manual competition." },
+    { cs: "Czech Cycling Academy Zdeňka Štybara prověří vaše děti svým důkladným testováním a vás pobaví virtuální realitou! Nebo to bude naopak?",
+      en: "Czech Cycling Academy patronated by Zdeněk Štybar will test your children with its thorough testing and entertain you with virtual reality! Or will it be the other way around?" },
+    { cs: "Specialized si připraví zábavný dětský pumptrack program.",
+      en: "Specialized will prepare a fun children's pumptrack program." },
+    { cs: "S ROUVY si vyzkoušíte soutěže na trenažerech i jízdu na válcích.",
+      en: "With ROUVY, you will try out competitions on trainers and riding on rollers." },
+    { cs: "Elitní český rallye jezdec Filip Mareš a jeho Toyota Yaris WRC2 se ukáže fanouškům cyklistiky díky značce SUPERIOR. Světe div se, je to totiž také nadšený cyklista!",
+      en: "Elite Czech rally driver Filip Mareš and his Toyota Yaris WRC2 will show themselves to cycling fans thanks to the SUPERIOR brand. No surprise since he is also an enthusiast cyclist!" },
+    { cs: "Kateřina Neumannová, účastnice prvního olympijského závodu horských kol na OH v Atlantě 1996, porovná náročnost cross-country tratí tehdy a dnes. A jak si jízdu na trati užije její dcera a talentovaná sportovkyně Lucie?",
+      en: "Kateřina Neumannová, a participant in the first Olympic mountain bike race at the 1996 Atlanta Olympics, will compare the difficulty of cross-country courses then and now. How will her daughter and talented athlete Lucie enjoy riding on the track?" },
   ];
 
   // ╔══════════════════════════════════════════════════════════╗
@@ -638,6 +703,24 @@
       font-size: 12px; color: var(--text-muted);
       margin-top: 3px; line-height: 1.4;
     }
+
+    /* Sekce "Spousta dalších akcí" */
+    .extras-section { margin-top: 36px; }
+    .extras-heading {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--text-muted);
+      padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 10px;
+    }
+    .extras-list {
+      list-style: disc;
+      padding-left: 18px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .extras-item {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 13px; line-height: 1.5; color: var(--text);
+    }
   `;
 
   // ╔══════════════════════════════════════════════════════════╗
@@ -798,6 +881,16 @@
       </div>`;
     }
 
+    _renderExtras() {
+      const items = EXTRAS.map(item =>
+        `<li class="extras-item">${tx(item, this._lang)}</li>`
+      ).join('');
+      return `<div class="extras-section">
+        <div class="extras-heading">${this._t('extras_heading')}</div>
+        <ul class="extras-list">${items}</ul>
+      </div>`;
+    }
+
     _renderColumns() {
       const day    = EVENTS.filter(e => e.day === this._activeDay);
       const timed  = day.filter(e => !e.allDay).sort((a, b) => a.time.localeCompare(b.time));
@@ -827,7 +920,8 @@
     _render() {
       this.shadowRoot.innerHTML = `<style>${STYLES}</style>` +
         this._renderHeading() + this._renderTabs() +
-        this._renderFilters() + this._renderColumns();
+        this._renderFilters() + this._renderColumns() +
+        this._renderExtras();
       this._attachEvents();
     }
 
