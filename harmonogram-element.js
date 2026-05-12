@@ -347,8 +347,8 @@
     { day: "sat", allDay: false, time: "19:15", duration: 25, type: "talkshow",
       title: { cs: "Talk Show Daniela Stacha",
                en: "Talk Show with Daniel Stach" },
-      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
-               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+      desc:  { cs: "Vavřinec Hradilek v ROBE Show Truck pohovoří o tom, jak si užívá sportovní "důchod", povypráví o svých úspěších v reality show Asia Express a určitě také pohovoří na téma já a mé kolo.",
+               en: "Former Olympic medallist Vavřinec Hradilek in ROBE Show Truck will talk about his sports retirement, successful appearance in the Asia Express reality show and definitely also about his beloved bike." } },
 
     { day: "sat", allDay: false, time: "19:40", duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show - Radim Nowak",
