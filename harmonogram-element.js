@@ -294,12 +294,6 @@
       desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
                en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." } },
 
-        { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>",
-               en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>" },
-      desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
-               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." } },
-
     { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
       desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
