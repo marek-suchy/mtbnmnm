@@ -241,6 +241,12 @@
       desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
                en: "Top Czech freestyle riders in a show full of incredible tricks." } },
 
+    { day: "sat", allDay: false, time: "10:30", duration: 25, type: "talkshow",
+      title: { cs: "Talk Show Daniela Stacha",
+               en: "Talk Show with Daniel Stach" },
+      desc:  { cs: "Kateřina Neumannová v ROBE Show Truck: 30 let od její účasti na OH 1996 Atlanta v disciplíně cross-country horských kol. Jak se náš sport za 30 let vyvinul a jakou roli hraje kolo v jejím životě dnes?",
+               en: "Kateřina Neumannová in ROBE Show Truck: 30 years since her participation at the 1996 Atlanta Olympics in MTB cross-country: how has the sport developed since then? And what role plays a bike in her life nowadays?" } },
+    
     { day: "sat", allDay: false, time: "10:40", duration: null, type: "exhibice",
       title: { cs: "BMX & SCOOTERING SHOW", en: "BMX & SCOOTERING SHOW" },
       desc:  { cs: "Profi BMX jezdci ukáží svoje umění na ALLWYN U-rampě.",
@@ -267,8 +273,8 @@
     { day: "sat", allDay: false, time: "12:45", duration: 30, type: "talkshow",
       title: { cs: "Talk Show Daniela Stacha",
                en: "Talk Show with Daniel Stach" },
-      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
-               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+      desc:  { cs: "Eva Adamczyková v ROBE Show Truck: zlato 2014, bronz 2018 a stříbro 2026, naše olympijská královna. Jakou roli hraje v jejím životě kolo a jak těžké bylo připravit se letos na Olympiádu s malým potomkem?",
+               en: "Eva Adamczyková, a true Czech Olympic Queen, in ROBE Show Truck: snowboardcross Olympic Gold in 2014, Bronze in 2018 and Silver in 2026. What role plays bike in her life and how difficult was it to prepare for the Olympics with a new little human around her?" } },
 
     { day: "sat", allDay: false, time: "13:30", duration: 20, type: "talkshow",
       title: { cs: "Projekt Czech Cycling Academy - Office Area",
