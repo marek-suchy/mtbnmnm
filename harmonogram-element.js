@@ -283,12 +283,18 @@
       link: URL_XCO },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
-      title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
-               en: "Educational e-MTB Ride with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
-      desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+      title: { cs: "Pojezd na singletrailech s <a class=\'ig-link\' href=\'https://www.instagram.com/trailhuntercz\' target=\'_blank\' rel=\'noopener\'>@trailhuntercz</a>",
+               en: "Ride local singletrails with <a class=\'ig-link\' href=\'https://www.instagram.com/trailhuntercz\' target=\'_blank\' rel=\'noopener\'>@trailhuntercz</a>" },
+      desc:  { cs: "Připojte se k Trail Hunterovi na lovu trailů v Cyklo aréně Vysočina.",
+               en: "Join Trail Hunter on a trail hunt around Vysočina Arena." } },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
+      title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>",
+               en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>" },
+      desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
+               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." } },
+
+        { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
       title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>",
                en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>" },
       desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
