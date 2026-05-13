@@ -495,8 +495,8 @@
   ];
 
   const EXTRAS = [
-    { cs: "Nový PŘEDZÁVODNÍ PROGRAM: 15minutová talk show Míry Lence a Patricie Srnské před každým závodem!",
-      en: "New PRE-RACE PROGRAM: A 15-minute talk show by Míra Lenc and Patricia Srnská before each race!" },
+    { cs: "Nový PŘEDZÁVODNÍ PROGRAM: 10minutová talk show Míry Lence a Patricie Srnské před každým závodem!",
+      en: "New PRE-RACE PROGRAM: A 10-minute talk show by Míra Lenc and Patricia Srnská before each race!" },
     { cs: "Online QR hry na LED obrazovkách o hodnotné ceny a britská DJka rozpoutají tu správnou předzávodní atmosféru.",
       en: "Online QR games on LED screens for valuable prizes and a British DJ will unleash the right pre-race atmosphere." },
     { cs: "O své úžasné sportovní zkušenosti se podělí Michal Prokop, Petr Vabroušek a spousta dalších sportovních celebrit.",
