@@ -184,10 +184,10 @@
                en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
 
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
-      title: { cs: "Holky holkám: workshop + vyjížďka",
-               en: "Girls to Girls: Workshop + Ride" },
-      desc:  { cs: "Tereza Huříková a Simona Foxová o biomechanice, psychice a poruchách příjmu potravy ve sportu. Završeno krátkou vyjížďkou.",
-               en: "Tereza Huříková and Simona Foxová on biomechanics, psychology and eating disorders in sports. Concluded with a short ride." } },
+      title: { cs: "Ženy v cyklistice: výkon, zdraví a radost ze sportu + social MTB/Gravel ride s Terezou Huříkovou a Simonou Foxovou.",
+               en: "Women in cycling: performance, health and joy of sport + social MTB/Gravel ride with Tereza Huříková and Simona Foxová." },
+      desc:  { cs: "Otevřená diskuze o tom, jak podporovat dívky a ženy ve sportu zdravě, dlouhodobě a bez zbytečného tlaku. Diskuze propojí zkušenosti z vrcholového sportu i běžného života...",
+               en: "An open discussion on how to support girls and women in sports in a healthy, long-term way without unnecessary pressure. The discussion will connect experiences from top sports and everyday life..." } },
 
     { day: "fri", allDay: false, time: "17:15", duration: null, type: "zavod",
       title: { cs: "XCC - Women U23",
