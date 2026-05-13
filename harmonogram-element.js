@@ -227,6 +227,13 @@
       desc:  { cs: "Filip Adel a Vojta Neradil v ROBE Show Truck: Jak těžký byl letošní Cape Epic? O tom nám pohovoří jeho absolventi z týmu Superior Lions, Adlík s Vojtou!",
                en: "Filip Adel and Vojta Neradil in ROBE Show Truck: How difficult was this year's Cape Epic? Its graduates from the Superior Lions team, Adlík and Vojta, will tell us about it!" } },
 
+    { day: "fri", allDay: true, time: null, duration: null, type: "testfest",
+      title: { cs: "Testovačka nových gravelových bot Salomon [15-19h]",
+               en: "Shoe-testing of a new Salomon gravel model [9 AM - 3 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější modely bot Salomon v různorodých terénech okolí Vysočina Areny: štěrkové cesty, traily, ale i volný les s měkkou hrabankou.",
+               en: "Try out the latest Salomon shoe models in the diverse terrain around Vysočina Arena: gravel roads, trails, but also open forest with soft loam." } },
+
+
 
 
     // ─── SOBOTA 23. 5. / SATURDAY MAY 23 ───
@@ -405,6 +412,12 @@
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
                en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
 
+        { day: "sat", allDay: true, time: null, duration: null, type: "testfest",
+      title: { cs: "Testovačka nových gravelových bot Salomon [10-19h]",
+               en: "Shoe-testing of a new Salomon gravel model [10 AM - 7 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější modely bot Salomon v různorodých terénech okolí Vysočina Areny: štěrkové cesty, traily, ale i volný les s měkkou hrabankou.",
+               en: "Try out the latest Salomon shoe models in the diverse terrain around Vysočina Arena: gravel roads, trails, but also open forest with soft loam." } },
+
 
     // ─── NEDĚLE 24. 5. / SUNDAY MAY 24 ───
     { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
@@ -511,6 +524,13 @@
                en: "Test Fest [9 AM - 3 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
                en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+
+    { day: "sun", allDay: true, time: null, duration: null, type: "testfest",
+      title: { cs: "Testovačka nových gravelových bot Salomon [9-15h]",
+               en: "Shoe-testing of a new Salomon gravel model [9 AM - 3 PM]" },
+      desc:  { cs: "Vyzkoušejte si nejnovější modely bot Salomon v různorodých terénech okolí Vysočina Areny: štěrkové cesty, traily, ale i volný les s měkkou hrabankou.",
+               en: "Try out the latest Salomon shoe models in the diverse terrain around Vysočina Arena: gravel roads, trails, but also open forest with soft loam." } },
+
   ];
 
   const EXTRAS = [
