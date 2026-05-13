@@ -221,6 +221,13 @@
       desc:  { cs: "Přední čeští BMX a scooter jezdci v show na ALLWYN U-rampě.",
                en: "Top Czech BMX and scooter riders in a show on the ALLWYN U-ramp." } },
 
+    { day: "fri", allDay: false, time: "19:30", duration: 30, type: "talkshow",
+      title: { cs: "Talk Show Míry Lence: Superior Lions na Cape Epic 2026",
+               en: "Talk Show by Míra Lenc: Superior Lions at Cape Epic 2026" },
+      desc:  { cs: "Filip Adel a Vojta Neradil v ROBE Show Truck: Jak těžký byl letošní Cape Epic? O tom nám pohovoří jeho absolventi z týmu Superior Lions, Adlík s Vojtou!",
+               en: "Filip Adel and Vojta Neradil in ROBE Show Truck: How difficult was this year's Cape Epic? Its graduates from the Superior Lions team, Adlík and Vojta, will tell us about it!" } },
+
+
 
     // ─── SOBOTA 23. 5. / SATURDAY MAY 23 ───
     { day: "sat", allDay: false, time: "09:00", duration: null, type: "zavod",
@@ -328,6 +335,12 @@
       desc:  { cs: "Veřejná projekce zápasu na LED obrazovce v cateringové zóně.",
                en: "Public screening of the match on the LED screen in the catering zone." } },
 
+    { day: "sat", allDay: false, time: "16:30", duration: 60, type: "vyjizd",
+      title: { cs: "Social run SALOMON s <a class=\'ig-link\' href=\'https://www.instagram.com/andula_v_behu\' target=\'_blank\' rel=\'noopener\'>@andula_v_behu</a>",
+               en: "Social run SALOMON with <a class=\'ig-link\' href=\'https://www.instagram.com/andula_v_behu\' target=\'_blank\' rel=\'noopener\'>@andula_v_behu</a>" },
+      desc:  { cs: "Společný výběh do okolí Vysočina Arény směr Bílá Skála, Vlachovice, Sykovec a přes Zahradníkův kout zpět. 7-10 km dle nadšení skupiny v přátelském tempu. Možnost otestovat nejnovější modely gravelových bot Salomon.",
+               en: "Joint run to the surroundings of Vysočina Arena towards Bílá Skála, Vlachovice, Sykovec and back via Zahradníkův kout. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." } },
+
     { day: "sat", allDay: false, time: "17:45", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
       desc:  { cs: "Přední čeští freestyloví jezdci v show plné neuvěřitelných triků.",
@@ -405,6 +418,12 @@
                en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/dostalova_g/\' target=\'_blank\' rel=\'noopener\'>@dostalova_g</a>" },
       desc:  { cs: "Gravel vyjížďka na vrchol Žďárských vrchů, 40 km v přátelském tempu.",
                en: "Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace." } },
+
+    { day: "sun", allDay: false, time: "09:00", duration: 60, type: "vyjizd",
+      title: { cs: "Social run SALOMON s <a class=\'ig-link\' href=\'https://www.instagram.com/daniel_minich\' target=\'_blank\' rel=\'noopener\'>@daniel_minich</a>",
+               en: "Social run SALOMON with <a class=\'ig-link\' href=\'https://www.instagram.com/daniel_minich\' target=\'_blank\' rel=\'noopener\'>@daniel_minich</a>" },
+      desc:  { cs: "Společný výběh za výhledy do okolí Vysočina Arény směr skokanský můstek na Šibenici, Harusův kopec, Jiříkovice a Vlachovice. 7-10 km dle nadšení skupiny v přátelském tempu. Možnost otestovat nejnovější modely gravelových bot Salomon.",
+               en: "Joint run with views to the surroundings of Vysočina Arena towards the ski-jumping hill Šibenice, Jiříkovice and Vlachovice. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." } },
 
     { day: "sun", allDay: false, time: "09:20", duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show",
