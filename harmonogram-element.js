@@ -460,8 +460,8 @@
     { day: "sun", allDay: false, time: "14:00", duration: 25, type: "talkshow",
       title: { cs: "Talk Show Daniela Stacha",
                en: "Talk Show with Daniel Stach" },
-      desc:  { cs: "Známé sportovní a cyklistické osobnosti pod palbou zvídavých otázek Daniela Stacha.",
-               en: "Well-known sports and cycling personalities under fire from Daniel Stach's curious questions." } },
+      desc:  { cs: "Biatonistka Gabriela Soukalová pod palbou zvídavých otázek Daniela Stacha: na jakém kole jezdí a proč? Jak vzpomíná na léta své úžasné sportovní kariéry a zážitky z naplněné Vysočina Arény? Jak se se jí líbí atmosféra elitních závodů horských kol v porovnání s biatlonem?",
+               en: "Former famous biathlete Gabriela Soukalová under fire from Daniel Stach's curious questions: what bike does she ride and why? How does she reckon the years of her amazing biathlon career? How does she like the atmosphere of elite MTB XC races comparing to biathlon?" } },
 
     { day: "sun", allDay: false, time: "14:25", duration: 15, type: "talkshow",
       title: { cs: "Saxo ROBE music show",
