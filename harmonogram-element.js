@@ -911,7 +911,7 @@
         </div>`;
 
       const cls    = `event-card${this._isVisible(e) ? '' : ' hidden'}`;
-      const target = e.linkBlank ? ' target="_blank" rel="noopener"' : '';
+      const target = link && !link.includes('mtbnmnm.com') ? ' target="_blank" rel="noopener"' : '';
 
       return link
         ? `<a class="${cls}" data-type="${e.type}" href="${link}"${target}>${inner}</a>`
