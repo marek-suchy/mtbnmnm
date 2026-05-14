@@ -101,6 +101,15 @@
   const URL_XCC          = { cs: "https://www.mtbnmnm.com/cs/race-program/xcc",          en: "https://www.mtbnmnm.com/race-program/xcc" };
   const URL_JUNIORSERIES = { cs: "https://www.mtbnmnm.com/cs/race-program/junior-series", en: "https://www.mtbnmnm.com/race-program/junior-series" };
   const URL_NIGHTRACE    = { cs: "https://www.mtbnmnm.com/cs/side-events/night-race",     en: "https://www.mtbnmnm.com/side-events/night-race" };
+  const URL_TESTFEST    = { cs: "https://www.mtbnmnm.com/cs/old-side-events/bike-demos",     en: "https://www.mtbnmnm.com/old-side-events/bike-demos" };
+  const URL_TEREHU    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshopy-a-vyjizdky-s66929/zeny-v-cyklistice-vykon-zdravi-a-radost-ze-sportu-social-mtb-gravel-ride-s-terezou-hurikovou-a-simonou-foxovou-patek-22-5-2026-15-00-17-00-e17227",     en: "https://mtbnmnm.reenio.cz/en/view/workshopy-a-vyjizdky-s66929/zeny-v-cyklistice-vykon-zdravi-a-radost-ze-sportu-social-mtb-gravel-ride-s-terezou-hurikovou-a-simonou-foxovou-patek-22-5-2026-15-00-17-00-e17227" };
+  const URL_GASPI    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/richard-gaspi-gasperotti-edukativni-e-bike-vyjizdka-patek-nedele-vice-terminu-e17226",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/richard-gaspi-gasperotti-edukativni-e-bike-vyjizdka-patek-nedele-vice-terminu-e17226" };
+  const URL_TH    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/pojezd-na-singletrailech-s-trailhuntercz-sobota-23-5-2026-14-00-e17273",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/pojezd-na-singletrailech-s-trailhuntercz-sobota-23-5-2026-14-00-e17273" };
+  const URL_HZO    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/girls-only-ride-holkazocele-sobota-23-5-2026-14-00-e17246",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/girls-only-ride-holkazocele-sobota-23-5-2026-14-00-e17246" };
+  const URL_VENCL    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/jakub-vencl-abus-vyjizdka-skokovy-workshop-sobota-23-5-2026-16-00-17-00-e17176",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/jakub-vencl-abus-vyjizdka-skokovy-workshop-sobota-23-5-2026-16-00-17-00-e17176" };
+  const URL_ANDULA    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/social-run-andula-v-behu-sobota-23-5-2026-16-30-e17271",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/social-run-andula-v-behu-sobota-23-5-2026-16-30-e17271" };
+  const URL_PASTOR    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/girls-only-ride-dostalova-g-nedele-24-5-2026-9-00-e17247",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/girls-only-ride-dostalova-g-nedele-24-5-2026-9-00-e17247" };
+  const URL_MINICH    = { cs: "https://mtbnmnm.reenio.cz/cs/view/workshops-and-rides-s66929/social-run-daniel-minich-nedele-24-5-2026-9-00-e17272",     en: "https://mtbnmnm.reenio.cz/en/view/workshops-and-rides-s66929/social-run-daniel-minich-nedele-24-5-2026-9-00-e17272" };
 
   const EVENTS = [
 
@@ -149,8 +158,8 @@
       title: { cs: "Test Fest [15-19h]",
                en: "Test Fest [3-7 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
-               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
-
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." },
+      link: URL_TESTFEST },
 
     // ─── PÁTEK 22. 5. / FRIDAY MAY 22 ───
     { day: "fri", allDay: false, time: "08:00", duration: 540, type: "zavod",
@@ -169,8 +178,9 @@
       title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
                en: "Educational e-MTB Ride with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
-
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." },
+      link: URL_GASPI },
+    
     { day: "fri", allDay: false, time: "13:00", duration: 240, type: "exhibice",
       title: { cs: "Jam session - freestyle MTB/BMX",
                en: "Jam Session - Freestyle MTB/BMX" },
@@ -181,13 +191,15 @@
       title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
                en: "Educational e-MTB Ride with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." },
+      link: URL_GASPI },
 
     { day: "fri", allDay: false, time: "15:00", duration: 120, type: "vyjizd",
       title: { cs: "Ženy v cyklistice: výkon, zdraví a radost ze sportu + social MTB/Gravel ride s Terezou Huříkovou a Simonou Foxovou.",
                en: "Women in cycling: performance, health and joy of sport + social MTB/Gravel ride with Tereza Huříková and Simona Foxová." },
       desc:  { cs: "Otevřená diskuze o tom, jak podporovat dívky a ženy ve sportu zdravě, dlouhodobě a bez zbytečného tlaku. Diskuze propojí zkušenosti z vrcholového sportu i běžného života...",
-               en: "An open discussion on how to support girls and women in sports in a healthy, long-term way without unnecessary pressure. The discussion will connect experiences from top sports and everyday life..." } },
+               en: "An open discussion on how to support girls and women in sports in a healthy, long-term way without unnecessary pressure. The discussion will connect experiences from top sports and everyday life..." },
+      link: URL_TEREHU },
 
     { day: "fri", allDay: false, time: "17:15", duration: null, type: "zavod",
       title: { cs: "XCC - Women U23",
@@ -207,7 +219,8 @@
       title: { cs: "Test Fest [10-19h]",
                en: "Test Fest [10 AM - 7 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
-               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." },
+      link: URL_TESTFEST },
 
     { day: "fri", allDay: false, time: "16:20", duration: 20, type: "exhibice",
       title: { cs: "BMX & SCOOTERING SHOW předních českých jezdců",
@@ -248,7 +261,8 @@
       title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
                en: "Educational e-MTB Ride with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." },
+      link: URL_GASPI },
 
     { day: "sat", allDay: false, time: "10:20", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -306,13 +320,15 @@
       title: { cs: "Pojezd na singletrailech s <a class=\'ig-link\' href=\'https://www.instagram.com/trailhuntercz\' target=\'_blank\' rel=\'noopener\'>@trailhuntercz</a>",
                en: "Ride local singletrails with <a class=\'ig-link\' href=\'https://www.instagram.com/trailhuntercz\' target=\'_blank\' rel=\'noopener\'>@trailhuntercz</a>" },
       desc:  { cs: "Připojte se k Trail Hunterovi na lovu trailů v Cyklo aréně Vysočina.",
-               en: "Join Trail Hunter on a trail hunt around Vysočina Arena." } },
+               en: "Join Trail Hunter on a trail hunt around Vysočina Arena." },
+      link: URL_TH },
 
     { day: "sat", allDay: false, time: "14:00", duration: 120, type: "vyjizd",
       title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>",
                en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/holkazocele\' target=\'_blank\' rel=\'noopener\'>@holkazocele</a>" },
       desc:  { cs: "MTB vyjížďka k pramenům Vysočiny, 40 km v přátelském tempu.",
-               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." } },
+               en: "MTB ride to the springs of Vysočina, 40 km at a friendly pace." },
+      link: URL_HZO },
 
     { day: "sat", allDay: false, time: "15:15", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -334,7 +350,8 @@
       title: { cs: "ABUS ride & jump s <a class=\'ig-link\' href=\'https://www.instagram.com/jakubvencl\' target=\'_blank\' rel=\'noopener\'>@jakubvencl</a>",
                en: "ABUS Ride & Jump with <a class=\'ig-link\' href=\'https://www.instagram.com/jakubvencl\' target=\'_blank\' rel=\'noopener\'>@jakubvencl</a>" },
       desc:  { cs: "Naučte se základní i pokročilejší techniku skákání na kole s Jakubem Venclem.",
-               en: "Learn basic and advanced jumping techniques on the bike with Jakub Vencl." } },
+               en: "Learn basic and advanced jumping techniques on the bike with Jakub Vencl." },
+      link: URL_VENCL },
 
     { day: "sat", allDay: false, time: "16:15", duration: null, type: "talkshow",
       title: { cs: "Promítání MS v hokeji: Česko - Slovensko",
@@ -346,7 +363,8 @@
       title: { cs: "Social run SALOMON s <a class=\'ig-link\' href=\'https://www.instagram.com/andula_v_behu\' target=\'_blank\' rel=\'noopener\'>@andula_v_behu</a>",
                en: "Social run SALOMON with <a class=\'ig-link\' href=\'https://www.instagram.com/andula_v_behu\' target=\'_blank\' rel=\'noopener\'>@andula_v_behu</a>" },
       desc:  { cs: "Společný výběh do okolí Vysočina Arény směr Bílá Skála, Vlachovice, Sykovec a přes Zahradníkův kout zpět. 7-10 km dle nadšení skupiny v přátelském tempu. Možnost otestovat nejnovější modely gravelových bot Salomon.",
-               en: "Joint run to the surroundings of Vysočina Arena towards Bílá Skála, Vlachovice, Sykovec and back via Zahradníkův kout. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." } },
+               en: "Joint run to the surroundings of Vysočina Arena towards Bílá Skála, Vlachovice, Sykovec and back via Zahradníkův kout. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." },
+      link: URL_ANDULA },
 
     { day: "sat", allDay: false, time: "17:45", duration: null, type: "exhibice",
       title: { cs: "AIRBAG SHOW", en: "AIRBAG SHOW" },
@@ -410,7 +428,8 @@
       title: { cs: "Test Fest [10-19h]",
                en: "Test Fest [10 AM - 7 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
-               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." },
+      link: URL_TESTFEST },
 
         { day: "sat", allDay: true, time: null, duration: null, type: "testfest",
       title: { cs: "Testovačka nových gravelových bot Salomon [10-19h]",
@@ -424,19 +443,22 @@
       title: { cs: "Edukativní e-MTB vyjížďka s <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>",
                en: "Educational e-MTB Ride with <a class=\'ig-link\' href=\'https://www.instagram.com/richardgasperotti\' target=\'_blank\' rel=\'noopener\'>@richardgasperotti</a>" },
       desc:  { cs: "Richard 'Gaspi' Gasperotti vás naučí ovládat asistenci motoru, brzdění s ABS i údržbu.",
-               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." } },
+               en: "Richard 'Gaspi' Gasperotti will teach you motor assistance control, ABS braking and maintenance." },
+      link: URL_GASPI },
 
     { day: "sun", allDay: false, time: "09:00", duration: 120, type: "vyjizd",
       title: { cs: "Girls-only ride s <a class=\'ig-link\' href=\'https://www.instagram.com/dostalova_g/\' target=\'_blank\' rel=\'noopener\'>@dostalova_g</a>",
                en: "Girls-only ride with <a class=\'ig-link\' href=\'https://www.instagram.com/dostalova_g/\' target=\'_blank\' rel=\'noopener\'>@dostalova_g</a>" },
       desc:  { cs: "Gravel vyjížďka na vrchol Žďárských vrchů, 40 km v přátelském tempu.",
-               en: "Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace." } },
+               en: "Gravel ride to the top of the Žďárské vrchy hills, 40 km at a friendly pace." },
+      link: URL_PASTOR },
 
     { day: "sun", allDay: false, time: "09:00", duration: 60, type: "vyjizd",
       title: { cs: "Social run SALOMON s <a class=\'ig-link\' href=\'https://www.instagram.com/daniel_minich\' target=\'_blank\' rel=\'noopener\'>@daniel_minich</a>",
                en: "Social run SALOMON with <a class=\'ig-link\' href=\'https://www.instagram.com/daniel_minich\' target=\'_blank\' rel=\'noopener\'>@daniel_minich</a>" },
       desc:  { cs: "Společný výběh za výhledy do okolí Vysočina Arény směr skokanský můstek na Šibenici, Harusův kopec, Jiříkovice a Vlachovice. 7-10 km dle nadšení skupiny v přátelském tempu. Možnost otestovat nejnovější modely gravelových bot Salomon.",
-               en: "Joint run with views to the surroundings of Vysočina Arena towards the ski-jumping hill Šibenice, Jiříkovice and Vlachovice. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." } },
+               en: "Joint run with views to the surroundings of Vysočina Arena towards the ski-jumping hill Šibenice, Jiříkovice and Vlachovice. 7-10 KM depending on the enthusiasm of the group at a friendly pace. Opportunity to test the latest model of Salomon gravel shoes." },
+      link: URL_MINICH },,
 
     { day: "sun", allDay: false, time: "09:20", duration: 20, type: "talkshow",
       title: { cs: "Saxo ROBE music show",
@@ -523,7 +545,8 @@
       title: { cs: "Test Fest [9-15h]",
                en: "Test Fest [9 AM - 3 PM]" },
       desc:  { cs: "Vyzkoušejte si nejnovější MTB a e-MTB na trailech v okolí Vysočina Areny.",
-               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." } },
+               en: "Try the latest MTBs and e-MTBs on trails around the Vysočina Arena." },
+      link: URL_TESTFEST },
 
     { day: "sun", allDay: true, time: null, duration: null, type: "testfest",
       title: { cs: "Testovačka nových gravelových bot Salomon [9-15h]",
