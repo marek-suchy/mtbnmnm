@@ -780,8 +780,7 @@
       font-size: 13px; line-height: 1.5; color: var(--text);
     }
 
-    .ig-link { color: var(--c-vyjizd); text-decoration: none; }
-    .ig-link:hover { text-decoration: underline; }
+    .handle { color: var(--c-testfest); }
   `;
 
   // ╔══════════════════════════════════════════════════════════╗
@@ -895,7 +894,7 @@
 
     _renderCard(e) {
       const dur   = e.duration ? `<span class="event-duration">· ${this._fmtDuration(e.duration)}</span>` : '';
-      const title = tx(e.title, this._lang);
+      const title = tx(e.title, this._lang).replace(/@([\w]+)/g, '<span class="handle">@$1</span>');
       const desc  = tx(e.desc,  this._lang);
       const tag   = tx(TYPES[e.type].label, this._lang);
       const link  = tx(e.link,  this._lang);
@@ -915,7 +914,7 @@
       const target = e.linkBlank ? ' target="_blank" rel="noopener"' : '';
 
       return link
-        ? `<a class="${cls}" data-type="${e.type}" href="${link}"${target}>${inner}</span>`
+        ? `<a class="${cls}" data-type="${e.type}" href="${link}"${target}>${inner}</a>`
         : `<div class="${cls}" data-type="${e.type}">${inner}</div>`;
     }
 
