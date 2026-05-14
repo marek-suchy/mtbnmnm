@@ -780,7 +780,7 @@
       font-size: 13px; line-height: 1.5; color: var(--text);
     }
 
-    .handle { color: var(--c-testfest); }
+    .handle { color: var(--c-vyjizd); }
   `;
 
   // ╔══════════════════════════════════════════════════════════╗
