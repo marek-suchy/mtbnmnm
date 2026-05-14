@@ -779,6 +779,9 @@
       font-family: var(--font-body); font-weight: 300;
       font-size: 13px; line-height: 1.5; color: var(--text);
     }
+
+    .ig-link { color: var(--c-vyjizd); text-decoration: none; }
+    .ig-link:hover { text-decoration: underline; }
   `;
 
   // ╔══════════════════════════════════════════════════════════╗
