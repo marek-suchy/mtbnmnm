@@ -120,7 +120,7 @@
       desc:  { cs: "Dovednostní soutěže na kole i bez něj a vědomostní hry o sportu, zdraví a životním prostředí.",
                en: "Skill competitions on and off the bike plus knowledge games about sports, health and the environment." } },
 
-    { day: "thu", allDay: false, time: "13:00", duration: 30, type: "deti",
+    { day: "thu", allDay: false, time: "12:30", duration: 30, type: "deti",
       title: { cs: "Dětská tisková konference",
                en: "Children's Press Conference" },
       desc:  { cs: "Hvězdy MTB scény odpovídají dětem na dotazy v unikátním formátu.",
