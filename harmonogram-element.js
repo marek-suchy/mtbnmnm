@@ -90,7 +90,6 @@
     { name: "Vavřinec Hradílek",          role: { cs: "", en: "" }, days: ["sat"] },
     { name: "Michal Prokop",              role: { cs: "", en: "" }, days: ["sun"] },
     { name: "Filip Mareš",                role: { cs: "", en: "" }, days: ["sun"] },
-    { name: "Petr Vabroušek",             role: { cs: "", en: "" }, days: ["sun"] },
     { name: "Jaroslav Kulhavý",           role: { cs: "", en: "" }, days: ["sun"] },
     { name: "Gabriela Soukalová",         role: { cs: "", en: "" }, days: ["sun"] },
   ];
