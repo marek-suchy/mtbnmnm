@@ -406,8 +406,8 @@
                en: "Exclusively for MTB Night Race participants." } },
 
     { day: "sat", allDay: false, time: "21:00", duration: null, type: "zavod",
-      title: { cs: "Knog Night Race & MTB party",
-               en: "Knog Night Race & MTB Party" },
+      title: { cs: "KNOG Night Race & MTB party",
+               en: "KNOG Night Race & MTB Party" },
       desc:  { cs: "Fanděte hvězdám, ale svezte se i vy! Veřejný noční závod pro každého.",
                en: "Cheer for the stars, but ride yourself too! A public night race for everyone." },
       link: URL_NIGHTRACE },
